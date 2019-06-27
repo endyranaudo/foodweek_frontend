@@ -34,18 +34,32 @@ class App extends Component {
           >
             Dasboard
           </Menu.Item>
+
           <Menu.Item
-            name='user profile'
-            active={activeItem === 'user profile'}
+            name='recipes'
+            active={activeItem === 'recipes'}
             onClick={this.handleItemClick}
-          >User Profile
+          >
+            Recipes
           </Menu.Item>
 
-          <Menu.Item name='sign-in' active={activeItem === 'sign-in'} onClick={this.handleItemClick}>
-            Favorite
+          <Menu.Item
+            name='shopping list'
+            active={activeItem === 'shopping list'}
+            onClick={this.handleItemClick}
+          >
+            Shopping List
           </Menu.Item>
 
+
+          
           <Menu.Menu position='right'>
+            <Menu.Item
+              name='profile'
+              active={activeItem === 'profile'}
+              onClick={this.handleItemClick}
+            />
+
             <Menu.Item
               name='logout'
               active={activeItem === 'logout'}
@@ -55,9 +69,9 @@ class App extends Component {
           
         </Menu>
         {/* TOP MENU - end */}
-        <Dashboard />
+        {/* <Dashboard /> */}
         <Login />
-        <UserProfile />
+        {/* <UserProfile /> */}
       </div>
     )
   }
