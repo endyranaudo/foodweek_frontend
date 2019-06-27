@@ -37,17 +37,17 @@ export default class componentName extends Component {
             <input placeholder='Last Name' />
           </Form.Field>
           <Form.Field>
-            <label>First Name</label>
-            <input placeholder='First Name' />
+            <label>Old Password</label>
+            <input type="password" placeholder='Old Password' />
           </Form.Field>
           <Form.Field>
-            <label>Last Name</label>
-            <input placeholder='Last Name' />
+            <label>New Password</label>
+            <input type="password" placeholder='New Password' />
           </Form.Field>
 
-          <Button className="teal" type='submit'>Change Password</Button>
+          <Button className="teal left floated " type='submit'>Change Password</Button>
           {/* secondary inverted  */}
-          <Button type='submit'>Edit Profile</Button>
+          <Button className="right floated" type='submit'>Edit Profile</Button>
         </Form>
 
       <div className="three wide column"></div>

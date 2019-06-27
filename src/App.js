@@ -70,8 +70,8 @@ class App extends Component {
         </Menu>
         {/* TOP MENU - end */}
         {/* <Dashboard /> */}
-        <Login />
-        {/* <UserProfile /> */}
+        {/* <Login /> */}
+        <UserProfile />
       </div>
     )
   }

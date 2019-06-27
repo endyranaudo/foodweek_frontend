@@ -2,15 +2,26 @@
   text-align: center;
 }
 
+.bg-img{
+  background-image: url("./images/food.jpg");
+  background-size: cover;
+  background-color: aquamarine
+}
+
 .App-link {
   color: #61dafb;
 }
 
-.group-btns{ 
-  margin-top: 20px;
+.mb-20{ 
+  margin-bottom: 20px;
 }
 
+.pt-20{
+  padding-top: 20px;
+}
+
+
 .inner-card{
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   /* background-color: red; */
 }
