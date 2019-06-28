@@ -15,13 +15,15 @@ export default class Login extends Component {
   render() {
     return (
       <div style={ sectionStyle }>
-      <Container>
+      <Container className="element">
         <div className="ui grid"> 
         <div className="five wide column"></div>
           <div className="six wide column">
 
           <Card className="centered">
-            <img className="ui center aligned"></img>
+            <div className="ui center aligned pt-20">
+            <img style={{maxHeight : 100, maxWidth: 100}} src='https://react.semantic-ui.com/logo.png' />
+            </div>
             <h2 className="ui center aligned">FoodWeek</h2>
             <p className="ui center aligned">Please log-in or sign-up for an account</p>
             

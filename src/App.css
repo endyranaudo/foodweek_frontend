@@ -16,12 +16,31 @@
   margin-bottom: 20px;
 }
 
+.mt-20{ 
+  margin-top: 200px;
+}
+
 .pt-20{
   padding-top: 20px;
 }
 
+.pb-20{
+  padding-bottom: 20px;
+}
+
+.test{
+  background-color: blueviolet;
+  height: 100px;
+  width: 100 px;
+}
 
 .inner-card{
   margin-bottom: 30px;
   /* background-color: red; */
+}
+
+.element {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
