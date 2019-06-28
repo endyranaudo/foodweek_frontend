@@ -20,13 +20,13 @@ export default class NavBar extends Component {
         {/* TOP MENU - start */}
         <Menu borderless>
           <Menu.Item>
-            <img style={{maxHeight : 50}} src='https://react.semantic-ui.com/logo.png' />
+            <img style={{maxHeight : 50}} src='https://react.semantic-ui.com/logo.png' alt="logo"/>
           </Menu.Item>
 
-          <Link to='/login'>
+          <Link to='/dashboard'>
             <Menu.Item
-              name='dasboard'
-              active={activeItem === 'dasboard'}
+              name='dashboard'
+              active={activeItem === 'dashboard'}
               onClick={this.handleItemClick}
             >
               Dasboard
@@ -62,7 +62,7 @@ export default class NavBar extends Component {
               />
             </Link>
 
-            <Link to='/hello'>
+            <Link to='/'>
               <Menu.Item
                 name='logout'
                 active={activeItem === 'logout'}

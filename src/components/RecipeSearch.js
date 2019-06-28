@@ -14,8 +14,10 @@ export default class RecipeSearch extends Component {
   }
 
   getRecipes() {
-    getRecipes()
-      .then(recipes => this.setState({recipes}))
+    getRecipes(this.state.searchTerm)
+      // .then(result => result.recipes)
+      // .then(recipes => this.setState({recipes: recipes.result}))
+      .then(console.log)
   }
 
   componentDidMount() {
@@ -31,6 +33,7 @@ export default class RecipeSearch extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const {baseUrl, searchTerm} = this.state;
+    this.getRecipes()
     this.setState({
      url: `${baseUrl}${searchTerm}`, searchTerm: ""
     })
@@ -39,36 +42,30 @@ export default class RecipeSearch extends Component {
   render() {
     return (
       <div>
+        < NavBar />
         <div>
-          {/* < NavBar /> */}
-        </div>
-        <div>
-          <Container className="element">
-          <div className="">
+          <Container>
             <div className="">
-              <h1>What do you have in your fridge?</h1>
-              <p>Let's find all the recipes you can make with your ingredients</p>
+              <h2 className="">What do you fancy?</h2>
+              <p>We have more than 360k ideas for you</p>
               <form className="" onSubmit={this.handleSubmit}>
                 <label>
                   Search for a recipe
                 </label>
-                <div className="">
+                <div className="ui input">
                   <input 
                     type="text"  
                     name="search" 
                     placeholder="" 
                     value={this.value}
                     onChange={this.handleChange}
-                    className=""/>
-                  <div className="">
-                    <button className="" type="submit">
+                  />
+                    <button className="ui button teal " type="submit">
                       Search
                     </button>
-                  </div>
                 </div>
               </form>
             </div>
-          </div>
           </Container>
         </div>
       </div>

@@ -22,7 +22,7 @@ export default class Login extends Component {
 
           <Card className="centered">
             <div className="ui center aligned pt-20">
-            <img style={{maxHeight : 100, maxWidth: 100}} src='https://react.semantic-ui.com/logo.png' />
+            <img style={{maxHeight : 100, maxWidth: 100}} src='https://react.semantic-ui.com/logo.png' alt="logo" />
             </div>
             <h2 className="ui center aligned">FoodWeek</h2>
             <p className="ui center aligned">Please log-in or sign-up for an account</p>

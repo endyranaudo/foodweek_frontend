@@ -41,10 +41,10 @@ export default class Login extends Component {
               <div className="twelve wide column">
 
               <Card className="centered">
-                <div class="ui middle aligned divided list">
+                <div className="ui middle aligned divided list">
                   <h2 className="ui center aligned">Your shopping list</h2>
                   <div className= "ui center aligned"> 
-                  <div class="ui input">
+                  <div className="ui input">
                     <input 
                       type="text" 
                       placeholder="Add item..." 

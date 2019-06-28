@@ -1,7 +1,7 @@
 // +++++++++++++++++++++++ SEARCH RECIPE ++++++++++++++++++++
 
-const getRecipes = () => {
-  const url = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query=burger`
+const getRecipes = (searchTerm) => {
+  const url = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query=${searchTerm}`
   return fetch(url, {
     headers: {
       "X-RapidAPI-Host" : "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
