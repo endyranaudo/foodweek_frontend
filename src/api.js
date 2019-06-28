@@ -12,7 +12,7 @@ const getRecipes = () => {
 
 // +++++++++++++++++++++++ GET RECIPE INFORMATION ++++++++++++++++++++
 
-const getRecipesDetail = () => {
+const getRecipeDetails = () => {
   const url = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/479101/information`
   return fetch(url, {
     headers: {
@@ -21,3 +21,5 @@ const getRecipesDetail = () => {
     }
   }).then(resp => resp.json())
 }
+
+export { getRecipes, getRecipeDetails  }

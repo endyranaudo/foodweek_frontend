@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Menu } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+
 
 export default class NavBar extends Component {
 
@@ -12,7 +14,7 @@ export default class NavBar extends Component {
   render() {
 
     const { activeItem } = this.state
-    
+
     return (
       <div>
         {/* TOP MENU - start */}
@@ -21,44 +23,53 @@ export default class NavBar extends Component {
             <img style={{maxHeight : 50}} src='https://react.semantic-ui.com/logo.png' />
           </Menu.Item>
 
-          <Menu.Item
-            name='dasboard'
-            active={activeItem === 'dasboard'}
-            onClick={this.handleItemClick}
-          >
-            Dasboard
-          </Menu.Item>
+          <Link to='/login'>
+            <Menu.Item
+              name='dasboard'
+              active={activeItem === 'dasboard'}
+              onClick={this.handleItemClick}
+            >
+              Dasboard
+            </Menu.Item>
+          </Link>
 
-          <Menu.Item
-            name='recipes'
-            active={activeItem === 'recipes'}
-            onClick={this.handleItemClick}
-          >
-            Recipes
-          </Menu.Item>
+          <Link to='/search'>
+            <Menu.Item
+              name='recipes'
+              active={activeItem === 'recipes'}
+              onClick={this.handleItemClick}
+            >
+              Recipes
+            </Menu.Item>
+          </Link>
 
-          <Menu.Item
-            name='shopping list'
-            active={activeItem === 'shopping list'}
-            onClick={this.handleItemClick}
-          >
-            Shopping List
-          </Menu.Item>
+          <Link to='/list'>
+            <Menu.Item
+              name='shopping list'
+              active={activeItem === 'shopping list'}
+              onClick={this.handleItemClick}
+            >
+              Shopping List
+            </Menu.Item>
+          </Link>
 
-
-          
           <Menu.Menu position='right'>
-            <Menu.Item
-              name='profile'
-              active={activeItem === 'profile'}
-              onClick={this.handleItemClick}
-            />
+            <Link to='/user'>
+              <Menu.Item
+                name='profile'
+                active={activeItem === 'profile'}
+                onClick={this.handleItemClick}
+              />
+            </Link>
 
-            <Menu.Item
-              name='logout'
-              active={activeItem === 'logout'}
-              onClick={this.handleItemClick}
-            />
+            <Link to='/hello'>
+              <Menu.Item
+                name='logout'
+                active={activeItem === 'logout'}
+                onClick={this.handleItemClick}
+              />
+            </Link>
+
           </Menu.Menu>
           
         </Menu>
