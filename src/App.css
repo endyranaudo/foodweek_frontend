@@ -1,16 +1,12 @@
+.test{
+  background-color: blueviolet;
+  height: 100px;
+  width: 100 px;
+}
+
+/* GENERAL */
 .App {
   text-align: center;
-}
-
-
-.bg-transp {
-  background-color: rgba(255, 255, 255, 0.6);
-}
-
-
-
-.App-link {
-  color: #61dafb;
 }
 
 .mb-20{ 
@@ -29,11 +25,21 @@
   padding-bottom: 20px;
 }
 
-.test{
-  background-color: blueviolet;
-  height: 100px;
-  width: 100 px;
+.bg-transp {
+  background-color: rgba(255, 255, 255, 0.6);
 }
+
+/* LIST */
+.list {
+  font-size: 1.8rem;
+  color: #181818
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+/* CARD */
 
 .inner-card{
   margin-bottom: 30px;
@@ -46,7 +52,4 @@
   transform: translateY(-50%);
 }
 
-.table-head {
-  background-color: #008080 !important;
-  color: white;
-}
+/* OTHER */

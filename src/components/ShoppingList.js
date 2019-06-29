@@ -39,28 +39,27 @@ export default class Login extends Component {
             <div className="ui grid"> 
             <div className="two wide column"></div>
               <div className="twelve wide column">
-
-              <Card className="centered">
-                <div className="ui middle aligned divided list">
-                  <h2 className="ui center aligned">Your shopping list</h2>
-                  <div className= "ui center aligned"> 
-                  <div className="ui input">
-                    <input 
-                      type="text" 
-                      placeholder="Add item..." 
-                      onChange={ e => this.changeUserInput(e.target.value) }
-                      value={this.state.userInput} 
-                    />
-                    <button className="ui button teal" onClick={()=> this.addToList(this.state.userInput)}> add </button>
+                <Card className="centered">
+                  <div className="ui middle aligned divided list">
+                    <h1 className="ui center aligned">Your shopping list</h1>
+                    <div className= "ui center aligned"> 
+                      <div className="ui input">
+                        <input 
+                          type="text" 
+                          placeholder="Add item..." 
+                          onChange={ e => this.changeUserInput(e.target.value) }
+                          value={this.state.userInput} 
+                        />
+                        <button className="ui button teal" onClick={()=> this.addToList(this.state.userInput)}> add </button>
+                      </div>
+                      <div className="ui list">
+                        {
+                          this.state.list.map((item) => <p className="item list"> {item} <input type="radio" name="radio" checked=""></input></p>)
+                        }
+                      </div>
+                    </div>
                   </div>
-                    <ul>
-                      {this.state.list.map((item) => <li>{item}</li>)}
-                    </ul>
-                  </div>
-                </div> 
-              </Card>
-
-
+                </Card>
               </div>
             <div className="two wide column"></div>
             </div>

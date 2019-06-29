@@ -16,7 +16,7 @@ export default class NavBar extends Component {
     const { activeItem } = this.state
 
     return (
-      <div>
+      <div> 
         {/* TOP MENU - start */}
         <Menu borderless>
           <Menu.Item>

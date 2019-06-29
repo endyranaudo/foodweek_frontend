@@ -20,14 +20,15 @@ export default class componentName extends Component {
     return (
       <div>
         < NavBar />
+        {/* <br></br> */}
       
         <div style={ sectionStyle }>
 
           <Container className="element">
-            <div className="ui grid bg-transp">
+            <div className="ui grid">
             <div className="three wide column"></div>
-              <Card className="five wide column ">
-                <Image src='enter url' wrapped ui={false} />
+              <Card className="five wide column left floated">
+                <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
                 <Card.Content>
                   <Card.Header>Matthew</Card.Header>
                   <Card.Meta>
@@ -39,28 +40,30 @@ export default class componentName extends Component {
                 </Card.Content>
               </Card>
 
-              <Form className="five wide column">
-                <Form.Field>
-                  <label>First Name</label>
-                  <input placeholder='First Name' />
-                </Form.Field>
-                <Form.Field>
-                  <label>Last Name</label>
-                  <input placeholder='Last Name' />
-                </Form.Field>
-                <Form.Field>
-                  <label>Old Password</label>
-                  <input type="password" placeholder='Old Password' />
-                </Form.Field>
-                <Form.Field>
-                  <label>New Password</label>
-                  <input type="password" placeholder='New Password' />
-                </Form.Field>
+              <Card className="five wide column right">
+                <Form className="five wide column bg-transp">
+                  <Form.Field>
+                    <label>First Name</label>
+                    <input placeholder='First Name' />
+                  </Form.Field>
+                  <Form.Field>
+                    <label>Last Name</label>
+                    <input placeholder='Last Name' />
+                  </Form.Field>
+                  <Form.Field>
+                    <label>Old Password</label>
+                    <input type="password" placeholder='Old Password' />
+                  </Form.Field>
+                  <Form.Field>
+                    <label>New Password</label>
+                    <input type="password" placeholder='New Password' />
+                  </Form.Field>
 
-                <Link to='/dashboard'><Button className="teal left floated " type='submit'>Back</Button></Link>
-                {/* secondary inverted  */}
-                <Button className="right floated" type='submit'>Edit Profile</Button>
-              </Form>
+                  <Link to='/dashboard'><Button className="teal right floated " type='submit'>Back</Button></Link>
+                  {/* secondary inverted  */}
+                  <Button className="left floated" type='submit'>Edit Profile</Button>
+                </Form>
+              </Card>
 
             <div className="three wide column"></div>
             </div>
