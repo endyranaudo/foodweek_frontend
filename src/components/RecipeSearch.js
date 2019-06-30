@@ -1,30 +1,30 @@
 import React, { Component, } from 'react';
 import NavBar from '../NavBar'
-import Recipe from './Recipe'
+import RecipeCard from './RecipeCard'
 import { Container } from 'semantic-ui-react';
 import { getRecipes } from '../api'
 
 export default class RecipeSearch extends Component {
 
   state = {
-    recipes: [],
+    recipes: [{id:'107878', title:'Garlic Chicken', readyInMinutes:4, servings:4}],
     recipe_id: null,
     searchTerm: '',
     baseUrl: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query='
 
   }
 
-  getRecipes() {
-    return getRecipes(this.state.searchTerm)
-      // .then(recipes => this.setState({recipes}))
-      // .then(this.setState({ recipes })
-      .then((recipes) => {
-        this.setState({recipes:recipes.results})
+  // getRecipes() {
+  //   return getRecipes(this.state.searchTerm)
+  //     // .then(recipes => this.setState({recipes}))
+  //     // .then(this.setState({ recipes })
+  //     .then((recipes) => {
+  //       this.setState({recipes:recipes.results})
         
-      })
+  //     })
       
       
-  }
+  // }
 
   // componentDidMount() {
   //   this.getRecipes()
@@ -40,9 +40,10 @@ export default class RecipeSearch extends Component {
     e.preventDefault();
     const {baseUrl, searchTerm, recipes} = this.state;
     
-    return this.getRecipes().then(data => {
-      console.log(this.state.recipes)
-    });
+    // return this.getRecipes().then(data => {
+    //   console.log(this.state.recipes)
+    // });
+    console.log(this.state.recipes)
 
    
     // this.setState({
@@ -85,7 +86,7 @@ export default class RecipeSearch extends Component {
             <div className="">
               <ul>
                 {
-                  this.state.recipes.map(recipe => <Recipe recipe={recipe}/>)
+                  this.state.recipes.map(recipe => <RecipeCard recipe={recipe}/>)
                 } 
               </ul>
             </div>

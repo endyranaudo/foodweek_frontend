@@ -1,33 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
 // import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, Image } from 'semantic-ui-react';
+import RecipeCardDetail from './RecipeCardDetail';
 
-const RecipeCard = props => {
-  console.log(props)
-  return<div>
-    <Card>
-    <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
-    <Card.Content>
-      <Card.Header>title:{props.recipes.title}</Card.Header>
-      <Card.Description>
-        <br></br>
-        <div className=''> <i class="clock outline icon"></i>Ready in {props.recipes.readyInMinutes} minutes </div>
-      </Card.Description>
-      <br></br>
-      <Card.Description>
-        <div className=''><i class="users icon"></i> Servings: {props.recipes.serving}</div>
-      </Card.Description>
-    </Card.Content>
-    <Card.Content extra className="">
-      <div class="ui red button left flaoted ">
-        <i class="heart icon"></i> love it!
+class RecipeCard extends Component {
+   
+
+  render() {
+
+    return(
+      <div>
+        <Card>
+        {/* <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} /> */}
+        <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
+        <Card.Content>
+          <Card.Header>{this.props.recipe.title}</Card.Header>
+          <Card.Description>
+            <br></br>
+            <div className=''> <i className="clock outline icon"></i>Ready in {this.props.recipe.readyInMinutes} minutes </div>
+          </Card.Description>
+          <Card.Description>
+            <div className=''><i className="users icon"></i> Servings: {this.props.recipe.servings}</div>
+          </Card.Description>
+        </Card.Content>
+        <Card.Content extra className="">
+          <div className="ui red button left flaoted ">
+            <i className="heart icon"></i> LOVE IT!
+          </div>
+          <div className="ui teal button right floated ">
+            <RecipeCardDetail recipeId={this.props.recipe.id}/>
+          </div>
+        </Card.Content>
+      </Card>
+
       </div>
-      <div class="ui teal button right floated ">
-        <i class="plus icon"></i> details
-      </div>
-    </Card.Content>
-  </Card>
-  </div>
+    )
+  }
+
 }
 
+
+
 export default RecipeCard;
+
+

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form } from 'react-router-dom'
+import { Form } from 'semantic-ui-react';
 
 export default class SignUp extends Component {
   render() {
