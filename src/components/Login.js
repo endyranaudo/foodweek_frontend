@@ -55,7 +55,7 @@ export default class Login extends Component {
                     <input type="checkbox" class="hidden" readonly="" tabindex="0" />
                     <label><small>Remember me</small></label>
                   </div>
-                  <a className="right floated" href="#"><small>Forgot password</small></a>
+                  <p className="right floated" href="#"><small>Forgot password</small></p>
                 </div>
 
                 {/* ADD MARGIN BOTTOM 20PX */}

@@ -1,7 +1,7 @@
 import React, { Component, } from 'react';
 import NavBar from '../NavBar'
 import Recipe from './Recipe'
-import { Container, Form } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import { getRecipes } from '../api'
 
 export default class RecipeSearch extends Component {
@@ -40,10 +40,6 @@ export default class RecipeSearch extends Component {
     this.setState({ recipes })
     console.log('RECIPES AFTER', recipes)
   }
-
-  // <div className="ui grid"> 
-  //       <div className="five wide column"></div>
-  //         <div className="six wide column">
 
   render() {
     return (

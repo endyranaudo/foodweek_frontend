@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../NavBar'
-import { Container, Input, Card } from 'semantic-ui-react';
+import { Container, Card } from 'semantic-ui-react';
 import '../App.css';
 
 let sectionStyle = {

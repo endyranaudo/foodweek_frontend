@@ -2,8 +2,10 @@ import React from 'react';
 // import React, { Component } from 'react';
 import { Card, Image } from 'semantic-ui-react';
 
-const Recipe = props => {
+const RecipeCard = props => {
+
   console.log('Recipe PROPS', props)
+
   return<div>
     <Card>
     <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
@@ -11,28 +13,23 @@ const Recipe = props => {
       <Card.Header>title:{props.title}</Card.Header>
       <Card.Description>
         <br></br>
-        <div className=''> <i className="clock outline icon"></i>Ready in {props.readyInMinutes} minutes </div>
+        <div className=''> <i class="clock outline icon"></i>Ready in {props.recipereadyInMinutes} minutes </div>
       </Card.Description>
+      <br></br>
       <Card.Description>
-        <div className=''><i className="users icon"></i> Servings: {props.serving}</div>
+        <div className=''><i class="users icon"></i> Servings: {props.serving}</div>
       </Card.Description>
     </Card.Content>
     <Card.Content extra className="">
-      <div className="ui red button left flaoted ">
-        <i className="heart icon"></i> LOVE IT!
+      <div class="ui red button left flaoted ">
+        <i class="heart icon"></i> love it!
       </div>
-      <div className="ui teal button right floated ">
-        <i className="plus icon"></i> DETAILS
+      <div class="ui teal button right floated ">
+        <i class="plus icon"></i> details
       </div>
     </Card.Content>
   </Card>
   </div>
-  // return <li className="ui card"> 
-  //   <h2>title:{props.title}</h2> 
-  // </li>
-
 }
 
-
-
-export default Recipe;
+export default RecipeCard;
