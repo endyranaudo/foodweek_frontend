@@ -15,12 +15,19 @@ export default class RecipeSearch extends Component {
   }
 
   getRecipes() {
-    getRecipes(this.state.searchTerm)
-      .then(console.log)
+    return getRecipes(this.state.searchTerm)
+      // .then(recipes => this.setState({recipes}))
+      // .then(this.setState({ recipes })
+      .then((recipes) => {
+        this.setState({recipes:recipes.results})
+        
+      })
+      
+      
   }
 
   // componentDidMount() {
-  //   this.getRecipes( recipea)
+  //   this.getRecipes()
   // }
 
   handleChange = (e) => {
@@ -32,13 +39,18 @@ export default class RecipeSearch extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const {baseUrl, searchTerm, recipes} = this.state;
-    this.getRecipes()
-    this.setState({
-     url: `${baseUrl}${searchTerm}`, searchTerm: ""
-    })
+    
+    return this.getRecipes().then(data => {
+      console.log(this.state.recipes)
+    });
+
+   
+    // this.setState({
+    //  url: `${baseUrl}${searchTerm}`, searchTerm: ""
+    // })
     // HERE ????
-    this.setState({ recipes })
-    console.log('RECIPES AFTER', recipes)
+    // this.setState({ recipes })
+    // console.log('RECIPES in setState', recipes)
   }
 
   render() {
@@ -63,7 +75,7 @@ export default class RecipeSearch extends Component {
                         value={this.value}
                         onChange={this.handleChange}
                       />
-                        <button className="ui button teal " type="submit">Search</button>
+                        <button className="ui button teal" style={{marginLeft: '5px'}} type="submit">Search</button>
                     </div>
                   </form>
                 </div>
@@ -72,7 +84,9 @@ export default class RecipeSearch extends Component {
             {/* SHOW RESULTS RECIPE SEARCH */}
             <div className="">
               <ul>
-                <Recipe title={console.log('Recipe from Search', this.state.recipes)}/>
+                {
+                  this.state.recipes.map(recipe => <Recipe recipe={recipe}/>)
+                } 
               </ul>
             </div>
           </Container>

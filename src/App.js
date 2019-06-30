@@ -3,6 +3,7 @@ import './App.css';
 import Dashboard from './components/Dashboard'
 import ShoppingList from './components/ShoppingList'
 import Login from './components/Login';
+// import SignUp from './components/SignUp'
 import UserProfile from './components/UserProfile';
 import RecipeSearch from './components/RecipeSearch'
 

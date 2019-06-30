@@ -12,7 +12,7 @@ export default class Login extends Component {
 
   state = {
     userInput: '',
-    list: []
+    itemsList: []
   }
 
   changeUserInput(input){
@@ -22,10 +22,10 @@ export default class Login extends Component {
   }
 
   addToList(input){
-    let listArray = this.state.list
+    let listArray = this.state.itemsList
     listArray.push(input)
     this.setState({
-      list: listArray,
+      itemsList: listArray,
       userInput: ''
     })
   }
@@ -40,8 +40,8 @@ export default class Login extends Component {
             <div className="two wide column"></div>
               <div className="twelve wide column">
                 <Card className="centered">
-                  <div className="ui middle aligned divided list">
-                    <h1 className="ui center aligned">Your shopping list</h1>
+                  <div className="ui middle aligned divided itemsList">
+                    <h1 className="ui center aligned">Your shopping itemsList</h1>
                     <div className= "ui center aligned"> 
                       <div className="ui input">
                         <input 
@@ -52,9 +52,9 @@ export default class Login extends Component {
                         />
                         <button className="ui button teal" onClick={()=> this.addToList(this.state.userInput)}> add </button>
                       </div>
-                      <div className="ui list">
+                      <div className="ui itemsList">
                         {
-                          this.state.list.map((item) => <p className="item list"> {item} <input type="radio" name="radio" checked=""></input></p>)
+                          this.state.itemsList.map((item) => <p className="item itemsList"> {item} <input type="radio" name="radio" checked=""></input></p>)
                         }
                       </div>
                     </div>

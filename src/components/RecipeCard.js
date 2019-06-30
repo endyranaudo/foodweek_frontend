@@ -3,21 +3,19 @@ import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
 
 const RecipeCard = props => {
-
-  console.log('Recipe PROPS', props)
-
+  console.log(props)
   return<div>
     <Card>
     <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
     <Card.Content>
-      <Card.Header>title:{props.title}</Card.Header>
+      <Card.Header>title:{props.recipes.title}</Card.Header>
       <Card.Description>
         <br></br>
-        <div className=''> <i class="clock outline icon"></i>Ready in {props.recipereadyInMinutes} minutes </div>
+        <div className=''> <i class="clock outline icon"></i>Ready in {props.recipes.readyInMinutes} minutes </div>
       </Card.Description>
       <br></br>
       <Card.Description>
-        <div className=''><i class="users icon"></i> Servings: {props.serving}</div>
+        <div className=''><i class="users icon"></i> Servings: {props.recipes.serving}</div>
       </Card.Description>
     </Card.Content>
     <Card.Content extra className="">

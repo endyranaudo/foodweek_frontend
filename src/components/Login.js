@@ -59,7 +59,7 @@ export default class Login extends Component {
                 </div>
 
                 {/* ADD MARGIN BOTTOM 20PX */}
-                <div className="mb-20">
+                <div style={{marginTop: '60px'}}>
                   <button className="ui button teal left floated">Login</button>
                   <button className="ui button right floated">Signup</button>
                 </div>

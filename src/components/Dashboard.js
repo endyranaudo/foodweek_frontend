@@ -30,11 +30,11 @@ export default class Dashboard extends Component {
                 <td>lunch</td>
               </tr>
               <tr>
-                <td>John</td>
-                <td>Approved</td>
-                <td title="This is much too long to fit I'm sorry about that">This is much too long to fit I'm sorry about that</td>
-                <td>Test</td>
-                <td>Test</td>
+                <td><span className="mr-20">Test Food</span> <i className="edit icon color teal"></i></td>
+                <td><span className="mr-20">Test Food</span> <i className="edit icon color teal"></i></td>
+                <td><span className="mr-20">Test Food</span> <i className="edit icon color teal"></i></td>
+                <td><span className="mr-20">Test Food</span> <i className="edit icon color teal"></i></td>
+                <td><span className="mr-20">Test Food</span> <i className="edit icon color teal"></i></td>
               </tr>
               <tr>
                 <td>dinner</td>
@@ -44,11 +44,11 @@ export default class Dashboard extends Component {
                 <td>dinner</td>
               </tr>
               <tr>
-                <td>Jill</td>
-                <td>Denied</td>
-                <td>Shorter description</td>
-                <td>Test</td>
-                <td>Test</td>
+                <td><span className="mr-20">Test Food</span> <i className="edit icon color teal"></i></td>
+                <td><span className="mr-20">Test Food</span> <i className="edit icon color teal"></i></td>
+                <td><span className="mr-20">Test Food</span> <i className="edit icon color teal"></i></td>
+                <td><span className="mr-20">Test Food</span> <i className="edit icon color teal"></i></td>
+                <td><span className="mr-20">Test Food</span> <i className="edit icon color teal"></i></td>
               </tr>
             </tbody>
           </table>
