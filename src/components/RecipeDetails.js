@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
+import RecipeIngredients from './RecipeIngredients'
+import RecipeInstructions from './RecipeInstructions'
 import { getRecipeDetails } from '../api';
+
+
+
 
 class RecipeDetails extends Component {
   
   state = {
-    recipeDetail:[]
+    recipeIngredients:[],
+    recipeInstructions:'Preparation Rub the chicken with paprika, salt, and pepper and set aside at room temperature for at least 1 hour or preferably in the refrigerator at least 8 hours or overnight.Preheat the oven to 400°F. '
   }
 
   getRecipeDetails () {
+    // NEED TO FIND AN ALTERNATIVE WAY
     const recipeId = window.location.pathname.split('/')[3];
-    return getRecipeDetails(recipeId).then((recipeDetail) => {
-       this.setState({recipeDetail:recipeDetail.extendedIngredients})
+    return getRecipeDetails(recipeId).then((recipeDetails) => {   
+       this.setState({recipeInstructions:recipeDetails.instructions, recipeIngredients:recipeDetails.extendedIngredients});
     });
   }
 
@@ -19,10 +26,20 @@ class RecipeDetails extends Component {
   }
 
   render() {
-    console.log(this.state.recipeDetail)
+    console.log(this.props)
     return (
       <div>
-        Hello
+        { 
+          this.state.recipeIngredients.map(ingredient =>  
+            <RecipeIngredients 
+                amount={ingredient.amount}
+                unit={ingredient.unit}
+                name={ingredient.name}
+                handleClickAdd={this.props.handleClickAdd}
+            />
+          )
+        }
+        <RecipeInstructions instructions={this.state.recipeInstructions} />
       </div>
     )
   }

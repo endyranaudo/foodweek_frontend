@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
 import NavBar from '../NavBar'
+import { Link } from 'react-router-dom'
 import '../App.css';
 
 export default class Dashboard extends Component {
+
+  //  state = {
+  //    ingredients: []
+  //  }
+
+  // // handleRecipeIngredient = (e) => {
+  // //   this.setState({
+  // //     ingredients: e.target.value
+  // //   })
+  // // }
+
   render() {
     return (
       <div>
@@ -12,7 +24,7 @@ export default class Dashboard extends Component {
           <div> 
           <i className="calendar outline icon"></i><span>My Week</span>
             
-          <table class="ui fixed single line celled table center aligned striped teal">
+          <table className="ui fixed single line celled table center aligned striped teal">
             <thead>
               <tr className="table-head">
               <th>Monday</th>
@@ -30,11 +42,11 @@ export default class Dashboard extends Component {
                 <td>lunch</td>
               </tr>
               <tr>
-                <td><span className="mr-20">Test Food</span> <i className="edit icon color teal"></i></td>
-                <td><span className="mr-20">Test Food</span> <i className="edit icon color teal"></i></td>
-                <td><span className="mr-20">Test Food</span> <i className="edit icon color teal"></i></td>
-                <td><span className="mr-20">Test Food</span> <i className="edit icon color teal"></i></td>
-                <td><span className="mr-20">Test Food</span> <i className="edit icon color teal"></i></td>
+                <td><span className="mr-20">Test Food</span> <Link to='/search'><i className="edit icon color teal"></i></Link></td>
+                <td><span className="mr-20">Test Food</span> <Link to='/search'><i className="edit icon color teal"></i></Link></td>
+                <td><span className="mr-20">Test Food</span> <Link to='/search'><i className="edit icon color teal"></i></Link></td>
+                <td><span className="mr-20">Test Food</span> <Link to='/search'><i className="edit icon color teal"></i></Link></td>
+                <td><span className="mr-20">Test Food</span> <Link to='/search'><i className="edit icon color teal"></i></Link></td>
               </tr>
               <tr>
                 <td>dinner</td>
@@ -44,11 +56,11 @@ export default class Dashboard extends Component {
                 <td>dinner</td>
               </tr>
               <tr>
-                <td><span className="mr-20">Test Food</span> <i className="edit icon color teal"></i></td>
-                <td><span className="mr-20">Test Food</span> <i className="edit icon color teal"></i></td>
-                <td><span className="mr-20">Test Food</span> <i className="edit icon color teal"></i></td>
-                <td><span className="mr-20">Test Food</span> <i className="edit icon color teal"></i></td>
-                <td><span className="mr-20">Test Food</span> <i className="edit icon color teal"></i></td>
+                <td><span className="mr-20">Test Food</span> <Link to='/search'><i className="edit icon color teal"></i></Link></td>
+                <td><span className="mr-20">Test Food</span> <Link to='/search'><i className="edit icon color teal"></i></Link></td>
+                <td><span className="mr-20">Test Food</span> <Link to='/search'><i className="edit icon color teal"></i></Link></td>
+                <td><span className="mr-20">Test Food</span> <Link to='/search'><i className="edit icon color teal"></i></Link></td>
+                <td><span className="mr-20">Test Food</span> <Link to='/search'><i className="edit icon color teal"></i></Link></td>
               </tr>
             </tbody>
           </table>

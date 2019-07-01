@@ -8,27 +8,19 @@ export default class RecipeSearch extends Component {
 
   state = {
     recipes: [{id:'107878', title:'Garlic Chicken', readyInMinutes:4, servings:4}],
+    // recipes: [],
     recipe_id: null,
     searchTerm: '',
-    baseUrl: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query='
+    // baseUrl: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query='
 
   }
 
-  // getRecipes() {
-  //   return getRecipes(this.state.searchTerm)
-  //     // .then(recipes => this.setState({recipes}))
-  //     // .then(this.setState({ recipes })
-  //     .then((recipes) => {
-  //       this.setState({recipes:recipes.results})
-        
-  //     })
-      
-      
-  // }
-
-  // componentDidMount() {
-  //   this.getRecipes()
-  // }
+  getRecipes() {
+    return getRecipes(this.state.searchTerm)
+      .then((recipes) => {
+        this.setState({recipes:recipes.results}) 
+      })
+  }
 
   handleChange = (e) => {
     this.setState({
@@ -38,20 +30,14 @@ export default class RecipeSearch extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const {baseUrl, searchTerm, recipes} = this.state;
+    const {baseUrl, searchTerm } = this.state;
     
     // return this.getRecipes().then(data => {
     //   console.log(this.state.recipes)
-    // });
-    console.log(this.state.recipes)
-
-   
-    // this.setState({
-    //  url: `${baseUrl}${searchTerm}`, searchTerm: ""
     // })
-    // HERE ????
-    // this.setState({ recipes })
-    // console.log('RECIPES in setState', recipes)
+    this.setState({
+     url: `${baseUrl}${searchTerm}`, searchTerm: ""
+    })
   }
 
   render() {
@@ -84,11 +70,9 @@ export default class RecipeSearch extends Component {
             </div>
             {/* SHOW RESULTS RECIPE SEARCH */}
             <div className="">
-              <ul>
-                {
-                  this.state.recipes.map(recipe => <RecipeCard recipe={recipe}/>)
-                } 
-              </ul>
+              {
+                this.state.recipes.map(recipe => <RecipeCard recipe={recipe} ingredients={this.props.ingredients}/>)
+              } 
             </div>
           </Container>
         </div>
@@ -96,18 +80,3 @@ export default class RecipeSearch extends Component {
     );
   }
 }
-
-
-// My first console.log tells me that my fetch works.
-// {results: Array(10), baseUri: "https://spoonacular.com/recipeImages/", offset: 0, number: 10, totalResults: 333, …}
-// baseUri: "https://spoonacular.com/recipeImages/"
-// expires: 1562075558398
-// isStale: false
-// number: 10
-// offset: 0
-// processingTimeMs: 443
-// results: (10) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-// totalResults: 333
-// __proto__: Object
-// Recipe from Search >> []
-// In Recipe.js component I get: Recipe PROPS {title: undefined}

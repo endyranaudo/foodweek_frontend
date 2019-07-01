@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NavBar from '../NavBar'
 import { Container, Card } from 'semantic-ui-react';
+// import { Modal, Button, Image, Header } from 'semantic-ui-react';
 import '../App.css';
 
 let sectionStyle = {
@@ -8,7 +9,7 @@ let sectionStyle = {
   height: "100vh",
 };
 
-export default class Login extends Component {
+export default class ShoppingList extends Component {
 
   state = {
     userInput: '',
@@ -27,6 +28,12 @@ export default class Login extends Component {
     this.setState({
       itemsList: listArray,
       userInput: ''
+    })
+  }
+
+  updatedList(){
+    this.setState({
+        itemList: this.props.items
     })
   }
 
@@ -50,11 +57,11 @@ export default class Login extends Component {
                           onChange={ e => this.changeUserInput(e.target.value) }
                           value={this.state.userInput} 
                         />
-                        <button className="ui button teal" onClick={()=> this.addToList(this.state.userInput)}> add </button>
+                        <button className="ui button teal" onClick={()=> this.props.handleClickAdd(this.state.userInput)}> add </button>
                       </div>
                       <div className="ui itemsList">
                         {
-                          this.state.itemsList.map((item) => <p className="item itemsList"> {item} <input type="radio" name="radio" checked=""></input></p>)
+                          this.props.items.map((item) => <p className="item itemsList"> {item} <input type="radio" name="radio" checked=""></input></p>)
                         }
                       </div>
                     </div>
@@ -72,3 +79,15 @@ export default class Login extends Component {
 
 
 
+// eslint-disable-next-line
+{/* <Modal trigger={<Button>Show Modal</Button>}>
+  <Modal.Header>Select a Photo</Modal.Header>
+    <Modal.Content image>
+      <Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' />
+        <Modal.Description>
+          <Header>Default Profile Image</Header>
+            <p>We've found the following gravatar image associated with your e-mail address.</p>
+            <p>Is it okay to use this photo?</p>
+        </Modal.Description>
+    </Modal.Content>
+</Modal> */}

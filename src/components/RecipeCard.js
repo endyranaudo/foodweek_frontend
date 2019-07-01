@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 // import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Card, Image } from 'semantic-ui-react';
-import RecipeCardDetail from './RecipeCardDetail';
+import RecipeDetailsLink from './RecipeDetailsLink';
 
 class RecipeCard extends Component {
-   
 
   render() {
 
@@ -29,7 +28,10 @@ class RecipeCard extends Component {
             <i className="heart icon"></i> LOVE IT!
           </div>
           <div className="ui teal button right floated ">
-            <RecipeCardDetail recipeId={this.props.recipe.id}/>
+            <RecipeDetailsLink 
+              recipeId={this.props.recipe.id} 
+              ingredients={this.props.ingredients}
+            />
           </div>
         </Card.Content>
       </Card>
