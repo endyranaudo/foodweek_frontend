@@ -30,7 +30,7 @@ export default class RecipeSearch extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const {baseUrl, searchTerm } = this.state;
+    // const {baseUrl, searchTerm } = this.state;
     
     return this.getRecipes().then(data => {
       console.log(this.state.recipes)

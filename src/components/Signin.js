@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Form, Card } from 'semantic-ui-react';
 import '../App.css';
 import Background from '../images/food.jpg'
+import { signin } from '../api'
 
 let sectionStyle = {
   width: "100%",
@@ -11,8 +12,33 @@ let sectionStyle = {
   BackgroundRepeat: 'no-repeat'
 };
 
-export default class Login extends Component {
+export default class Signin extends Component {
+
+  state = {
+    username: '',
+    password: ''
+  }
+
+  handleSubmit = () => {
+    signin(this.state.username, this.state.password)
+      .then(data => {
+        if (data.error){
+          alert(data.error)
+        } else {
+          // this.props.signin(data.username)
+          this.props.history.push('/dashboard')
+        }
+      })
+  }
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value})
+  }
+
   render() {
+
+    const {username, password} = this.state
+    const {handleChange, handleSubmit} = this
     return (
       <div style={ sectionStyle }>
       <Container className="element">
@@ -36,7 +62,14 @@ export default class Login extends Component {
                   <Form.Field>
                     <label>Username</label>
                       <div class="ui left icon input">
-                        <input type="text" placeholder="Username" />
+                        <input 
+                          id= 'usernameInput'
+                          type="text"  
+                          placeholder="Username" 
+                          value={username}
+                          onChange={handleChange}
+                          name="username"
+                        />
                         <i class="user icon"></i>
                     </div>
                   </Form.Field>
@@ -44,7 +77,14 @@ export default class Login extends Component {
                   <Form.Field>
                     <label>Password</label>
                       <div class="ui left icon input">
-                        <input type="password" placeholder="Password" />
+                      <input 
+                          id= 'passwordInput'
+                          type="password"  
+                          placeholder="Password" 
+                          value={ password }
+                          onChange={ handleChange }
+                          name="password"
+                        />
                         <i class="lock icon"></i>
                     </div>
                   </Form.Field>
@@ -60,7 +100,7 @@ export default class Login extends Component {
 
                 {/* ADD MARGIN BOTTOM 20PX */}
                 <div style={{marginTop: '60px'}}>
-                  <button className="ui button teal left floated">Login</button>
+                  <button onClick={ handleSubmit } className="ui button teal left floated">Signin</button>
                   <button className="ui button right floated">Signup</button>
                 </div>
               

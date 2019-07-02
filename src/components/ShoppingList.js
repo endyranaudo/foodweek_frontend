@@ -4,6 +4,8 @@ import { Container, Card } from 'semantic-ui-react';
 // import { Modal, Button, Image, Header } from 'semantic-ui-react';
 import '../App.css';
 
+
+
 let sectionStyle = {
   width: "100%",
   height: "100vh",
@@ -28,14 +30,12 @@ export default class ShoppingList extends Component {
     listArray.push(input)
     this.setState({
       itemsList: listArray,
-      userInput: ''
     })
   }
 
   updatedList(){
     this.setState({
-        itemList: this.props.items,
-        userInput: ''
+        itemList: this.props.items
     })
     // let userInput = document.querySelector('#userInput')
     // userInput: ''
