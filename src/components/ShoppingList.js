@@ -18,8 +18,9 @@ export default class ShoppingList extends Component {
 
   changeUserInput(input){
     this.setState({
-        userInput: input
-    }, () => console.log(input))
+        userInput: input,
+    }, 
+    () => console.log(input))
   }
 
   addToList(input){
@@ -33,8 +34,11 @@ export default class ShoppingList extends Component {
 
   updatedList(){
     this.setState({
-        itemList: this.props.items
+        itemList: this.props.items,
+        userInput: ''
     })
+    // let userInput = document.querySelector('#userInput')
+    // userInput: ''
   }
 
   render() {
@@ -51,9 +55,10 @@ export default class ShoppingList extends Component {
                     <h1 className="ui center aligned">Your shopping itemsList</h1>
                     <div className= "ui center aligned"> 
                       <div className="ui input">
-                        <input 
-                          type="text" 
-                          placeholder="Add item..." 
+                        <input
+                          id="userInput"
+                          type="text"
+                          placeholder="Add item..."
                           onChange={ e => this.changeUserInput(e.target.value) }
                           value={this.state.userInput} 
                         />

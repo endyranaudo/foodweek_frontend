@@ -6,16 +6,6 @@ import '../App.css';
 
 export default class Dashboard extends Component {
 
-  //  state = {
-  //    ingredients: []
-  //  }
-
-  // // handleRecipeIngredient = (e) => {
-  // //   this.setState({
-  // //     ingredients: e.target.value
-  // //   })
-  // // }
-
   render() {
     return (
       <div>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import RecipeIngredients from './RecipeIngredients'
 import RecipeInstructions from './RecipeInstructions'
 import { getRecipeDetails } from '../api';
+import NavBar from '../NavBar';
 
 
 
@@ -29,6 +30,8 @@ class RecipeDetails extends Component {
     console.log(this.props)
     return (
       <div>
+        < NavBar />
+        <div>
         { 
           this.state.recipeIngredients.map(ingredient =>  
             <RecipeIngredients 
@@ -39,6 +42,7 @@ class RecipeDetails extends Component {
             />
           )
         }
+        </div>
         <RecipeInstructions instructions={this.state.recipeInstructions} />
       </div>
     )

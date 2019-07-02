@@ -7,11 +7,11 @@ import { getRecipes } from '../api'
 export default class RecipeSearch extends Component {
 
   state = {
-    recipes: [{id:'107878', title:'Garlic Chicken', readyInMinutes:4, servings:4}],
-    // recipes: [],
+    // recipes: [{id:'107878', title:'Garlic Chicken', readyInMinutes:4, servings:4}],
+    recipes: [],
     recipe_id: null,
     searchTerm: '',
-    // baseUrl: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query='
+    baseUrl: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query='
 
   }
 
@@ -32,12 +32,12 @@ export default class RecipeSearch extends Component {
     e.preventDefault();
     const {baseUrl, searchTerm } = this.state;
     
-    // return this.getRecipes().then(data => {
-    //   console.log(this.state.recipes)
-    // })
-    this.setState({
-     url: `${baseUrl}${searchTerm}`, searchTerm: ""
+    return this.getRecipes().then(data => {
+      console.log(this.state.recipes)
     })
+    // this.setState({
+    //  url: `${baseUrl}${searchTerm}`, searchTerm: ""
+    // })
   }
 
   render() {
