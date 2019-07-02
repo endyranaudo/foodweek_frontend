@@ -6,10 +6,11 @@ import '../App.css';
 
 export default class Dashboard extends Component {
 
+
   render() {
     return (
       <div>
-        < NavBar />
+        < NavBar signout={this.props.signout}/>
         <Container>
           <div> 
           <i className="calendar outline icon"></i><span>My Week</span>

@@ -11,7 +11,14 @@ export function signin (username, password){
   }).then(resp => resp.json())
 }
 
-export default { signin }
+
+export function validate () {
+  return fetch('http://localhost:3000/validate', {
+    headers: { 'Authorisation': localStorage.token },
+  }).then(resp => resp.json())
+}
+
+export default { signin, validate }
 
 // +++++++++++++++++++++++ SEARCH RECIPE ++++++++++++++++++++
 

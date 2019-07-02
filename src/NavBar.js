@@ -64,11 +64,11 @@ export default class NavBar extends Component {
               />
             </Link>
 
-            <Link to='/'>
+            <Link to='/signin'>
               <Menu.Item
                 name='logout'
                 active={activeItem === 'logout'}
-                onClick={this.handleItemClick}
+                onClick={() => this.props.signout()}
               />
             </Link>
 
