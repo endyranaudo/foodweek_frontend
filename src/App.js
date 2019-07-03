@@ -37,7 +37,7 @@ class App extends Component {
   signin = (user) => {
     this.setState({ username: user.username }) 
     this.props.history.push('/dashboard')
-    localStorage.setItem('token', user.id)
+    localStorage.setItem('token', user.token)
   }
 
   signout = () => {
@@ -62,10 +62,10 @@ class App extends Component {
           {/* <Route path="/signin" component={props => <Signin signin={signin} {...props} />}/> */}
           <Route exact path="/signup" render={props => {return(<SignUp />)}}/>
           <Route exact path="/dashboard" render={props => {return(<Dashboard username={username} signout={signout}  />)}}/>
-          <Route exact path="/search" render={props => {return(<RecipeSearch />)}}/>
-          <Route exact path="/search/recipe/:id" render={props => {return(<RecipeDetails handleClickAdd={this.handleClickAdd}/>)}}/>
-          <Route exact path="/list" render={props => {return(<ShoppingList items={this.state.ingredients} handleClickAdd={this.handleClickAdd} />)}}/>
-          <Route exact path="/user" render={props => {return(<UserProfile />)}}/>
+          <Route exact path="/search" render={props => {return(<RecipeSearch signout={signout}/>)}}/>
+          <Route exact path="/search/recipe/:id" render={props => {return(<RecipeDetails handleClickAdd={this.handleClickAdd} signout={signout}/>)}}/>
+          <Route exact path="/list" render={props => {return(<ShoppingList items={this.state.ingredients} handleClickAdd={this.handleClickAdd} signout={signout} />)}}/>
+          <Route exact path="/user" render={props => {return(<UserProfile signout={signout}/>)}}/>
           {/* <Route component={() => <h1>PAGE NOT FOUND!<h1/>} /> */}
         </ Switch>
       </div>

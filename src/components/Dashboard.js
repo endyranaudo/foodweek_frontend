@@ -10,7 +10,7 @@ export default class Dashboard extends Component {
   render() {
     return (
       <div>
-        < NavBar signout={this.props.signout}/>
+        < NavBar signout={this.props.signout} username={this.props.username}/>
         <Container>
           <div> 
           <i className="calendar outline icon"></i><span>My Week</span>
