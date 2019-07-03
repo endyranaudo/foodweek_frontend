@@ -19,15 +19,17 @@ export default class componentName extends Component {
   render() {
     return (
       <div>
-        < NavBar />
+        <div>
+          < NavBar />
+        </div>
         {/* <br></br> */}
       
         <div style={ sectionStyle }>
 
           <Container className="element">
             <div className="ui grid">
-            <div className="three wide column"></div>
-              <Card className="five wide column left floated">
+            <div className="five wide column"></div>
+              {/* <Card className="five wide column left floated">
                 <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
                 <Card.Content>
                   <Card.Header>Matthew</Card.Header>
@@ -38,16 +40,24 @@ export default class componentName extends Component {
                     Matthew is a musician living in Nashville.
                   </Card.Description>
                 </Card.Content>
-              </Card>
+              </Card> */}
 
-              <Card className="five wide column right">
-                <Form className="five wide column bg-transp">
+              <Card className="six wide column right">
+
+                <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
+                <Card.Content>
+                  <Card.Header>{this.props.username}</Card.Header>
+                  <Card.Meta>
+                    <span className='date'>Joined in 2015</span>
+                  </Card.Meta>
+                  {/* <Card.Description>
+                    Matthew is a musician living in Nashville.
+                  </Card.Description> */}
+                </Card.Content>
+
+                <Form>
                   <Form.Field>
-                    <label>First Name</label>
-                    <input placeholder='First Name' />
-                  </Form.Field>
-                  <Form.Field>
-                    <label>Last Name</label>
+                    <label>Username</label>
                     <input placeholder='Last Name' />
                   </Form.Field>
                   <Form.Field>
@@ -65,7 +75,7 @@ export default class componentName extends Component {
                 </Form>
               </Card>
 
-            <div className="three wide column"></div>
+            <div className="five wide column"></div>
             </div>
           </Container>
         </div>

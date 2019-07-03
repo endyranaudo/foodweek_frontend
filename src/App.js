@@ -63,9 +63,9 @@ class App extends Component {
           <Route exact path="/signup" render={props => {return(<SignUp />)}}/>
           <Route exact path="/dashboard" render={props => {return(<Dashboard username={username} signout={signout}  />)}}/>
           <Route exact path="/search" render={props => {return(<RecipeSearch signout={signout}/>)}}/>
-          <Route exact path="/search/recipe/:id" render={props => {return(<RecipeDetails handleClickAdd={this.handleClickAdd} signout={signout}/>)}}/>
+          <Route exact path="/search/recipe/:id" render={props => {return(<RecipeDetails {...props} handleClickAdd={this.handleClickAdd} signout={signout}/>)}}/>
           <Route exact path="/list" render={props => {return(<ShoppingList items={this.state.ingredients} handleClickAdd={this.handleClickAdd} signout={signout} />)}}/>
-          <Route exact path="/user" render={props => {return(<UserProfile signout={signout}/>)}}/>
+          <Route exact path="/user" render={props => {return(<UserProfile signout={signout} {...props}/>)}}/>
           {/* <Route component={() => <h1>PAGE NOT FOUND!<h1/>} /> */}
         </ Switch>
       </div>

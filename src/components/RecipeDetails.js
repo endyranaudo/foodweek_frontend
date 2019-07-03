@@ -15,8 +15,9 @@ class RecipeDetails extends Component {
   }
 
   getRecipeDetails () {
-    // NEED TO FIND AN ALTERNATIVE WAY
-    const recipeId = window.location.pathname.split('/')[3];
+    // OLD WAY
+    // const recipeId = window.location.pathname.split('/')[3];
+    const recipeId = this.props.match.params.id
     return getRecipeDetails(recipeId).then((recipeDetails) => {   
        this.setState({recipeInstructions:recipeDetails.instructions, recipeIngredients:recipeDetails.extendedIngredients});
     });
@@ -28,6 +29,7 @@ class RecipeDetails extends Component {
 
   render() {
     console.log(this.props)
+    // debugger
     return (
       <div>
         < NavBar />
@@ -35,9 +37,10 @@ class RecipeDetails extends Component {
         { 
           this.state.recipeIngredients.map(ingredient =>  
             <RecipeIngredients 
-                amount={ingredient.amount}
-                unit={ingredient.unit}
+                // amount={ingredient.amount}
+                // unit={ingredient.unit}
                 name={ingredient.name}
+                originalString={ingredient.originalString}
                 handleClickAdd={this.props.handleClickAdd}
             />
           )

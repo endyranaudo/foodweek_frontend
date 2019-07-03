@@ -17,7 +17,6 @@ export default class NavBar extends Component {
 
     return (
       <div> 
-        {/* TOP MENU - start */}
         <Menu borderless>
           <Link to='/dashboard'>
             <Menu.Item>
@@ -75,7 +74,6 @@ export default class NavBar extends Component {
           </Menu.Menu>
           
         </Menu>
-        {/* TOP MENU - end */}
       </div>
     );
   }

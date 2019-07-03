@@ -64,7 +64,7 @@ export default class ShoppingList extends Component {
                         />
                         <button className="ui button teal" onClick={()=> this.props.handleClickAdd(this.state.userInput)}> add </button>
                       </div>
-                      <div className="ui itemsList">
+                      <div style={{marginTop: '30px', marginBottom:'30px'}} className="ui itemsList">
                         {
                           this.props.items.map((item) => <p className="item itemsList"> {item} <input type="radio" name="radio" checked=""></input></p>)
                         }

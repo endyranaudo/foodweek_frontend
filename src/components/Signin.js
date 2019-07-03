@@ -6,10 +6,10 @@ import { signin } from '../api'
 
 let sectionStyle = {
   width: "100%",
-  height: "100vh",
+  height: "110vh",
   backgroundImage: `url(${Background})`,
   backgroundSize: 'cover',
-  BackgroundRepeat: 'no-repeat'
+  BackgroundRepeat: 'no-repeat',
 };
 
 export default class Signin extends Component {
@@ -48,11 +48,10 @@ export default class Signin extends Component {
 
           <Card className="centered">
             <div className="ui center aligned pt-20">
-            <img style={{maxHeight : 100, maxWidth: 100}} src='https://react.semantic-ui.com/logo.png' alt="logo" />
+            <img style={{maxHeight : 100, maxWidth: 100, maring: '50'}} src='https://react.semantic-ui.com/logo.png' alt="logo" />
             </div>
             <h2 className="ui center aligned">FoodWeek</h2>
             <p className="ui center aligned">Please log-in or sign-up for an account</p>
-            
             
             <div className="ui grid ">
               <div className="two wide column"></div>
