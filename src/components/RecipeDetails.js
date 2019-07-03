@@ -32,7 +32,7 @@ class RecipeDetails extends Component {
     // debugger
     return (
       <div>
-        < NavBar />
+        < NavBar signout={this.props.signout} username={this.props.username}/>
         <div>
         { 
           this.state.recipeIngredients.map(ingredient =>  

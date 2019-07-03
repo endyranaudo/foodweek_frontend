@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
 
-export default class SignUp extends Component {
+export default class Signup extends Component {
   render() {
     return (
       <div>

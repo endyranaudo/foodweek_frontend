@@ -43,7 +43,7 @@ export default class RecipeSearch extends Component {
   render() {
     return (
       <div>
-        < NavBar />
+        < NavBar signout={this.props.signout} username={this.props.username}/>
         <div>
           <br></br>
           <Container>

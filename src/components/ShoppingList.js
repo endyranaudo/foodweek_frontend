@@ -44,7 +44,7 @@ export default class ShoppingList extends Component {
   render() {
     return (
       <div>
-        < NavBar />
+        < NavBar signout={this.props.signout} username={this.props.username}/>
         <div style={ sectionStyle }>
           <Container className="element">
             <div className="ui grid"> 

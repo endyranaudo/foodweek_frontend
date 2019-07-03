@@ -20,7 +20,7 @@ export default class componentName extends Component {
     return (
       <div>
         <div>
-          < NavBar />
+        < NavBar signout={this.props.signout} username={this.props.username}/>
         </div>
         {/* <br></br> */}
       
@@ -29,30 +29,15 @@ export default class componentName extends Component {
           <Container className="element">
             <div className="ui grid">
             <div className="five wide column"></div>
-              {/* <Card className="five wide column left floated">
-                <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
-                <Card.Content>
-                  <Card.Header>Matthew</Card.Header>
-                  <Card.Meta>
-                    <span className='date'>Joined in 2015</span>
-                  </Card.Meta>
-                  <Card.Description>
-                    Matthew is a musician living in Nashville.
-                  </Card.Description>
-                </Card.Content>
-              </Card> */}
 
               <Card className="six wide column right">
 
                 <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
                 <Card.Content>
                   <Card.Header>{this.props.username}</Card.Header>
-                  <Card.Meta>
+                  {/* <Card.Meta>
                     <span className='date'>Joined in 2015</span>
-                  </Card.Meta>
-                  {/* <Card.Description>
-                    Matthew is a musician living in Nashville.
-                  </Card.Description> */}
+                  </Card.Meta> */}
                 </Card.Content>
 
                 <Form>

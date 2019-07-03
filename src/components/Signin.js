@@ -6,7 +6,7 @@ import { signin } from '../api'
 
 let sectionStyle = {
   width: "100%",
-  height: "110vh",
+  height: "100vh",
   backgroundImage: `url(${Background})`,
   backgroundSize: 'cover',
   BackgroundRepeat: 'no-repeat',
