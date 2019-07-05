@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Form, Card } from 'semantic-ui-react';
 import '../App.css';
 import Background from '../images/food.jpg'
+import { Link } from 'react-router-dom'
 import { signin } from '../api'
 
 let sectionStyle = {
@@ -42,7 +43,7 @@ export default class Signin extends Component {
     return (
       <div style={ sectionStyle }>
       <Container className="element">
-        <div className="ui grid"> 
+        <div className=""> 
         <div className="five wide column"></div>
           <div className="six wide column">
 
@@ -100,7 +101,7 @@ export default class Signin extends Component {
                 {/* ADD MARGIN BOTTOM 20PX */}
                 <div style={{marginTop: '60px'}}>
                   <button onClick={ handleSubmit } className="ui button teal left floated">Signin</button>
-                  <button className="ui button right floated">Signup</button>
+                  < Link to='/signup' ><button className="ui button right floated">New user?</button></Link>
                 </div>
               
               </div >

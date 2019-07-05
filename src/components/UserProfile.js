@@ -16,6 +16,13 @@ let sectionStyle = {
 
 
 export default class componentName extends Component {
+
+  componentDidMount = () => {
+    if (!this.props.username) {
+      this.props.history.push('/signin')
+    }
+  }
+  
   render() {
     return (
       <div>

@@ -15,6 +15,12 @@ export default class RecipeSearch extends Component {
 
   }
 
+  componentDidMount = () => {
+    if (!this.props.username) {
+      this.props.history.push('/signin')
+    }
+  }
+
   getRecipes() {
     return getRecipes(this.state.searchTerm)
       .then((recipes) => {
@@ -49,27 +55,30 @@ export default class RecipeSearch extends Component {
           <Container>
             <div className="ui grid">
               <div className="five wide column"></div>
-                <div className="six wide column">
-                  <h2 className="ui center aligned">What do you fancy?</h2>
-                  <p>We have more than 360k ideas for you</p>
-                  <form className="ui center aligned" onSubmit={this.handleSubmit}>
-                    <br></br>
-                    <div className="ui input">
-                      <input 
-                        type="text"  
-                        name="search" 
-                        placeholder="" 
-                        value={this.value}
-                        onChange={this.handleChange}
-                      />
-                        <button className="ui button teal" style={{marginLeft: '5px'}} type="submit">Search</button>
-                    </div>
-                  </form>
+
+                <div className="six wide column center aligned ">
+                  <div className="">
+                      <h2 className="">What do you fancy?</h2>
+                      <p>We have more than 360k ideas for you</p>
+                      <form className="" onSubmit={this.handleSubmit}>
+                        <div className="ui input">
+                          <input 
+                            type="text"  
+                            name="search" 
+                            placeholder="" 
+                            value={this.value}
+                            onChange={this.handleChange}
+                          />
+                          <button className="ui button teal" style={{marginLeft: '5px'}} type="submit">Search</button>
+                        </div>
+                      </form>
+                  </div>
                 </div>
+                
               <div className="five wide column"></div>
             </div>
             {/* SHOW RESULTS RECIPE SEARCH */}
-            <div className="">
+            <div className="ui three column relaxed grid">
               {
                 this.state.recipes.map(recipe => <RecipeCard recipe={recipe} ingredients={this.props.ingredients}/>)
               } 

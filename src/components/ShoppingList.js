@@ -18,6 +18,12 @@ export default class ShoppingList extends Component {
     itemsList: []
   }
 
+  componentDidMount = () => {
+    if (!this.props.username) {
+      this.props.history.push('/signin')
+    }
+  }
+
   changeUserInput(input){
     this.setState({
         userInput: input,

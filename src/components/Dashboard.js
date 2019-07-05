@@ -7,7 +7,13 @@ import '../App.css';
 export default class Dashboard extends Component {
 
   state = {
-    open: false 
+    open: false
+  }
+
+  componentDidMount = () => {
+    if (!this.props.username) {
+      this.props.history.push('/signin')
+    }
   }
 
   show = dimmer => () => this.setState({ dimmer, open: true })
@@ -74,7 +80,7 @@ export default class Dashboard extends Component {
           </div>
 
           <div style={{marginTop: '30px'}}>
-            <Button className="ui teal button right floated" onClick={this.show('blurring')}>Saved Week</Button>
+            <button className="ui teal button right floated" onClick={this.show('blurring')}>Saved Week</button>
           </div>
             
             {/* TEMPLATE WEEK MODAL start */}

@@ -10,8 +10,8 @@ class RecipeCard extends Component {
     return(
       <div>
         <Card>
-        {/* <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} /> */}
-        <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
+        {/* <Image src={`"https://" + ${this.props.recipe.image}`} wrapped ui={false} /> */}
+        <Image src="https://spoonacular.com/recipeImages/char-grilled-beef-tenderloin-with-three-herb-chimichurri-156992.jpg" wrapped ui={false} />
         <Card.Content>
           <Card.Header>{this.props.recipe.title}</Card.Header>
           <Card.Description>
