@@ -2,7 +2,7 @@ import React, { Component, } from 'react';
 import NavBar from '../NavBar'
 import RecipeCard from './RecipeCard'
 import { Container } from 'semantic-ui-react';
-import { getRecipes } from '../api'
+import { getRecipes } from '../services/api'
 
 export default class RecipeSearch extends Component {
 

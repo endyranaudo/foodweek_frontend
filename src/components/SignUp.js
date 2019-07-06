@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Form, Card } from 'semantic-ui-react';
 import Background from '../images/food.jpg'
-// import { signup } from '../api'
 
 
 let sectionStyle = {
@@ -15,19 +14,28 @@ let sectionStyle = {
 
 export default class Signup extends Component {
 
+  state = {
+    username: '',
+    email: '',
+    password: ''
+  }
+
   // componentDidMount = () => {
   //   if (!this.props.username) {
   //     this.props.history.push('/signin')
   //   }
   // }
 
-  handleSubmit = () => {
-
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value })
   }
+  
   
   render() {
 
-    const {handleSubmit } = this
+    const { username, email, password } = this.state
+    const { handleChange, handleSubmit } = this
+
     return (
       <div style={ sectionStyle }>
       <Container className="element">
@@ -46,17 +54,16 @@ export default class Signup extends Component {
               <div className="two wide column"></div>
               <div className="twelve wide column inner-card ">
 
-                <Form className="mb-20">
+                <Form className="mb-20" onSubmit={(event) => this.props.signup(event, this.state)} >
                   <Form.Field>
                     <label>username</label>
                       <div class="ui left icon input">
                         <input 
-                          id= 'usernameInput'
-                          type="text"  
-                          placeholder="Username" 
-                          // value={username}
-                          // onChange={handleChange}
+                          onChange={handleChange}
                           name="username"
+                          value={ username }
+                          type="text"  
+                          placeholder="create a username" 
                         />
                         <i class="user icon"></i>
                     </div>
@@ -66,11 +73,10 @@ export default class Signup extends Component {
                     <label>email address</label>
                       <div class="ui left icon input">
                         <input 
-                          id= 'usernameInput'
+                          onChange={ handleChange }
                           type="text"  
+                          value={ email }
                           placeholder="your@email.com" 
-                          // value={username}
-                          // onChange={handleChange}
                           name="email"
                         />
                         <i class="envelope icon"></i>
@@ -81,31 +87,21 @@ export default class Signup extends Component {
                     <label>password</label>
                       <div class="ui left icon input">
                       <input 
-                          id= 'passwordInput'
+                          onChange={ handleChange }
                           type="password"  
-                          placeholder="Password" 
-                          // value={ password }
-                          // onChange={ handleChange }
+                          value={ password }
+                          placeholder="create a password" 
                           name="password"
                         />
                         <i class="lock icon"></i>
                     </div>
                   </Form.Field>
-                </Form>
 
-                <div className="mb-20">
-                  <div class="ui checkbox left floated">
-                    <input type="checkbox" class="hidden" readonly="" tabindex="0" />
-                    <label><small>Remember me</small></label>
-                  </div>
-                  <p className="right floated" href="#"><small>Forgot password</small></p>
-                </div>
-
-                {/* ADD MARGIN BOTTOM 20PX */}
-                <div style={{marginTop: '60px'}}>
-                  <button onClick={ handleSubmit } className="ui button teal left floated">Create Account</button>
+                <div style={{marginTop: '30px'}}>
+                  <button onClick={ handleSubmit } type="submit" className="ui button teal left floated">Create Account</button>
                   <button className="ui button right floated">back</button>
                 </div>
+                </Form>
               
               </div >
               <div className="two wide column"></div>

@@ -5,14 +5,17 @@ import './App.css';
 import Dashboard from './components/Dashboard'
 import ShoppingList from './components/ShoppingList'
 import Signin from './components/Signin';
-import Signup from './components/Signup'
+import SignUp from './components/SignUp'
 import UserProfile from './components/UserProfile';
 import RecipeSearch from './components/RecipeSearch'
 import RecipeDetails from './components/RecipeDetails';
 
 import { withRouter, Route, Switch } from 'react-router-dom'
-import { validate } from './api'
+import { validate } from './services/api'
 // import { Link } from 'react-router-dom'
+
+const baserURL = "http://localhost:3000"
+const usersURL = `${baserURL}/users`
 
 class App extends Component {
 
@@ -34,7 +37,7 @@ class App extends Component {
         })
     }
   }
-
+  // SIGNIN & SIGNOUT ########
   signin = (user) => {
     this.setState({ username: user.username }) 
     this.props.history.push('/dashboard')
@@ -47,6 +50,49 @@ class App extends Component {
     localStorage.removeItem('token')
   }
 
+  // SIGNUP ########
+
+  signup = (event, user) => {
+    event.preventDefault()
+    const newUser = {
+      username: user.username,
+      email: user.email,
+      password: user.password
+    }
+    this.createNewUserBackend(newUser)
+    .then(user => this.signin(user))
+  }
+
+  createNewUserBackend = user => {
+    return fetch(usersURL, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(user)
+    })
+    .then(resp => resp.json())
+  }
+
+  // signup = ( username, email, password ) => {
+  //   const baseURL = "http://localhost:3000"
+  //   const signUpURL = baseURL + "/users";
+  //   const options = {
+  //     method: "POST",
+  //     headers : { 
+  //       "Content-Type": "application/json",
+  //       "Accept": "application/json"
+  //      },
+  //     body: JSON.stringify({
+  //       username: username,
+  //       email: email,
+  //       password: password
+  //     })
+  //   };
+  
+//   return fetch(signUpURL, options).then(resp => resp.json())
+// }
+
+
+  // INGREDIENTS ########
   handleClickAdd = (ingredientName) => {
     this.setState({
       ingredients: [...this.state.ingredients, ingredientName]
@@ -61,7 +107,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/signin" render={props => {return(<Signin {...props} signin={signin} />)}}/>
           {/* <Route path="/signin" component={props => <Signin signin={signin} {...props} />}/> */}
-          <Route exact path="/signup" render={props => {return(<Signup {...props} />)}}/>
+          <Route exact path="/signup" render={props => {return(<SignUp {...props} signup={this.signup} />)}}/>
           <Route exact path="/dashboard" render={props => {return(<Dashboard {...props} username={username} signout={signout} />)}}/>
           <Route exact path="/search" render={props => {return(<RecipeSearch {...props} username={username} signout={signout} />)}}/>
           <Route exact path="/search/recipe/:id" render={props => {return(<RecipeDetails {...props} username={username} signout={signout} handleClickAdd={this.handleClickAdd} />)}}/>

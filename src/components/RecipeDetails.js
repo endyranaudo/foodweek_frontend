@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import RecipeIngredients from './RecipeIngredients'
 import RecipeInstructions from './RecipeInstructions'
-import { getRecipeDetails } from '../api';
+import { getRecipeDetails } from '../services/api';
 import NavBar from '../NavBar';
 
 
