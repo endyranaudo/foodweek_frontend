@@ -44,32 +44,32 @@ export default class Dashboard extends Component {
               </tr></thead>
               <tbody>
                 <tr>
-                  <td>lunch</td>
-                  <td>lunch</td>
-                  <td>lunch</td>
-                  <td>lunch</td>
-                  <td>lunch</td>
+                  <td><span className="mr-20">LUNCH</span><Link to='/search'><i className="edit icon color teal"></i></Link></td>
+                  <td><span className="mr-20">LUNCH</span><Link to='/search'><i className="edit icon color teal"></i></Link></td>
+                  <td><span className="mr-20">LUNCH</span><Link to='/search'><i className="edit icon color teal"></i></Link></td>
+                  <td><span className="mr-20">LUNCH</span><Link to='/search'><i className="edit icon color teal"></i></Link></td>
+                  <td><span className="mr-20">LUNCH</span><Link to='/search'><i className="edit icon color teal"></i></Link></td>
                 </tr>
                 <tr>
-                  <td><span className="mr-20">Test Food</span> <Link to='/search'><i className="edit icon color teal"></i></Link></td>
-                  <td><span className="mr-20">Test Food</span> <Link to='/search'><i className="edit icon color teal"></i></Link></td>
-                  <td><span className="mr-20">Test Food</span> <Link to='/search'><i className="edit icon color teal"></i></Link></td>
-                  <td><span className="mr-20">Test Food</span> <Link to='/search'><i className="edit icon color teal"></i></Link></td>
-                  <td><span className="mr-20">Test Food</span> <Link to='/search'><i className="edit icon color teal"></i></Link></td>
+                  <td><span className="mr-20">Test Food</span></td>
+                  <td><span className="mr-20">Test Food</span></td>
+                  <td><span className="mr-20">Test Food</span></td>
+                  <td><span className="mr-20">Test Food</span></td>
+                  <td><span className="mr-20">Test Food</span></td>
                 </tr>
                 <tr>
-                  <td>dinner</td>
-                  <td>dinner</td>
-                  <td>dinner</td>
-                  <td>dinner</td>
-                  <td>dinner</td>
+                  <td><span className="mr-20">DINNER</span><Link to='/search'><i className="edit icon color teal"></i></Link></td>
+                  <td><span className="mr-20">DINNER</span><Link to='/search'><i className="edit icon color teal"></i></Link></td>
+                  <td><span className="mr-20">DINNER</span><Link to='/search'><i className="edit icon color teal"></i></Link></td>
+                  <td><span className="mr-20">DINNER</span><Link to='/search'><i className="edit icon color teal"></i></Link></td>
+                  <td><span className="mr-20">DINNER</span><Link to='/search'><i className="edit icon color teal"></i></Link></td>
                 </tr>
                 <tr>
-                  <td><span className="mr-20">Test Food</span> <Link to='/search'><i className="edit icon color teal"></i></Link></td>
-                  <td><span className="mr-20">Test Food</span> <Link to='/search'><i className="edit icon color teal"></i></Link></td>
-                  <td><span className="mr-20">Test Food</span> <Link to='/search'><i className="edit icon color teal"></i></Link></td>
-                  <td><span className="mr-20">Test Food</span> <Link to='/search'><i className="edit icon color teal"></i></Link></td>
-                  <td><span className="mr-20">Test Food</span> <Link to='/search'><i className="edit icon color teal"></i></Link></td>
+                  <td><span className="mr-20">Test Food</span></td>
+                  <td><span className="mr-20">Test Food</span></td>
+                  <td><span className="mr-20">Test Food</span></td>
+                  <td><span className="mr-20">Test Food</span></td>
+                  <td><span className="mr-20">Test Food</span></td>
                 </tr>
               </tbody>
             </table>

@@ -11,7 +11,8 @@ let sectionStyle = {
   height: "100vh",
   backgroundImage: `url(${Background})`,
   backgroundSize: 'cover',
-  BackgroundRepeat: 'no-repeat'
+  BackgroundRepeat: 'no-repeat',
+  marginTop: "14px"
 };
 
 

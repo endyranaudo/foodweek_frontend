@@ -16,6 +16,7 @@ import { validate } from './services/api'
 
 const baserURL = "http://localhost:3000"
 const usersURL = `${baserURL}/users`
+const userIngredientsURL = `${baserURL}/user_ingredients`
 
 class App extends Component {
 
@@ -37,7 +38,9 @@ class App extends Component {
         })
     }
   }
+
   // SIGNIN & SIGNOUT ########
+
   signin = (user) => {
     this.setState({ username: user.username }) 
     this.props.history.push('/dashboard')
@@ -49,6 +52,7 @@ class App extends Component {
     // this.props.history.push('/signin')
     localStorage.removeItem('token')
   }
+
 
   // SIGNUP ########
 
@@ -72,24 +76,42 @@ class App extends Component {
     .then(resp => resp.json())
   }
 
-  // signup = ( username, email, password ) => {
-  //   const baseURL = "http://localhost:3000"
-  //   const signUpURL = baseURL + "/users";
-  //   const options = {
-  //     method: "POST",
-  //     headers : { 
-  //       "Content-Type": "application/json",
-  //       "Accept": "application/json"
-  //      },
-  //     body: JSON.stringify({
-  //       username: username,
-  //       email: email,
-  //       password: password
-  //     })
-  //   };
-  
-//   return fetch(signUpURL, options).then(resp => resp.json())
-// }
+
+  // ADD ITEMS TO LIST
+
+  addItemToList = ingredient => {
+    if (!this.state.ingredients.find(i => i.name === ingredient.name)) {
+
+      this.findCurrentUser(this.state.currentUser)
+      .then(user => {
+        const newListItem = {
+          ingredient_id: ingredient.id,
+          user_id: user.id
+        }
+        this.createShoppingListItemBackend(newListItem)
+        this.findItemInIngredients(newListItem)})
+    }
+  }
+
+  findItemInIngredients = item => {
+    const selectedIngredient = this.state.ingredients.find(i => i.id === item.ingredient_id)
+    this.setState({ ingredients: [...this.state.ingredients, selectedIngredient] })
+  }
+
+  createShoppingListItemBackend = item => {
+    return fetch(userIngredientsURL, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(item)
+    })
+    .then(resp => resp.json())
+  }
+
+
+  // REMOVE ITEMS FROM LIST
+
+
+
 
 
   // INGREDIENTS ########

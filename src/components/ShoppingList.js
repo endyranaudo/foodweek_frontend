@@ -15,7 +15,7 @@ export default class ShoppingList extends Component {
 
   state = {
     userInput: '',
-    itemsList: []
+    shoppingList: []
   }
 
   componentDidMount = () => {
@@ -28,15 +28,14 @@ export default class ShoppingList extends Component {
     this.setState({
         userInput: input,
         
-    }, 
-    () => console.log(input))
+    })
   }
 
   addToList(input){
-    let listArray = this.state.itemsList
+    let listArray = this.state.shoppingList
     listArray.push(input)
     this.setState({
-      itemsList: listArray,
+      shoppingList: listArray,
     })
   }
 
@@ -44,8 +43,6 @@ export default class ShoppingList extends Component {
     this.setState({
         itemList: this.props.items
     })
-    // let userInput = document.querySelector('#userInput')
-    // userInput: ''
   }
 
   render() {
@@ -58,8 +55,8 @@ export default class ShoppingList extends Component {
             <div className="two wide column"></div>
               <div className="twelve wide column">
                 <Card className="centered">
-                  <div className="ui middle aligned divided itemsList mt-20">
-                    <h1 className="ui center aligned ">Your shopping itemsList</h1>
+                  <div className="ui middle aligned divided shoppingList mt-20">
+                    <h1 className="ui center aligned ">Your shopping shoppingList</h1>
                     <div className= "ui center aligned"> 
                       <div className="ui input">
                         <input
@@ -71,9 +68,9 @@ export default class ShoppingList extends Component {
                         />
                         <button className="ui button teal" onClick={()=> this.props.handleClickAdd(this.state.userInput)}> add </button>
                       </div>
-                      <div style={{marginTop: '30px', marginBottom:'30px'}} className="ui itemsList">
+                      <div style={{marginTop: '30px', marginBottom:'30px'}} className="ui shoppingList">
                         {
-                          this.props.items.map((item) => <p className="item itemsList"> {item} <input type="radio" name="radio" checked=""></input></p>)
+                          this.props.items.map((item) => <p className="item shoppingList"> {item} <input type="radio" name="radio" checked=""></input></p>)
                         }
                       </div>
                     </div>

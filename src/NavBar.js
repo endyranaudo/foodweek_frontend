@@ -20,7 +20,7 @@ export default class NavBar extends Component {
       <div> 
         <Menu borderless>
           <Link to='/dashboard'>
-            <Menu.Item>
+            <Menu.Item className="ml-10">
               <img style={{height : 50, width: 50}} src={ logo } alt="logo"/>
             </Menu.Item>
           </Link>
@@ -82,7 +82,7 @@ export default class NavBar extends Component {
                 name='logout'
                 active={activeItem === 'logout'}
                 onClick={() => this.props.signout()}
-                className='mt-15'
+                className='mt-15 mr-10'
               />
             </Link>
 

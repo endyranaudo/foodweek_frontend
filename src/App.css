@@ -72,7 +72,13 @@
   margin-bottom: 20px;
 }
 
+.ml-10{
+  margin-left: 10px;
+}
 
+.mr-10{
+  margin-right: 10px;
+}
 
 .ml-20{
   margin-left: 20px;
