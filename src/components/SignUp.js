@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Form, Card } from 'semantic-ui-react';
+import { Container, Form, } from 'semantic-ui-react';
 import Background from '../images/food.jpg'
+import { Link } from 'react-router-dom'
+import logoSignin from '../images/Logo_sign_in.png'
 
 
 let sectionStyle = {
@@ -38,81 +40,78 @@ export default class Signup extends Component {
 
     return (
       <div style={ sectionStyle }>
-      <Container className="element">
-        <div className=""> 
-        <div className="five wide column"></div>
-          <div className="six wide column">
+        <div className="element">
+          <Container>
+              <div className="ten wide column">
+                <div  className="ui segment center aligned">
+                  <div className="ui center aligned pt-20">
+                  <img style={{maxHeight : 100, maxWidth: 100}} src={ logoSignin } alt="logo" />
+                  </div>
+                  <br></br>
+                  {/* <h2 className="ui center aligned">FoodWeek</h2> */}
+                  <p className="ui center aligned">Create a new account</p>
+                  
+                  <div className="ui grid ">
+                    <div className="five wide column"></div>
+                    
+                    <div className="six wide column">
+                      <Form onSubmit={(event) => this.props.signup(event, this.state)} >
+                        <Form.Field>
+                          <label>username</label>
+                            <div class="ui left icon input">
+                              <input 
+                                onChange={handleChange}
+                                name="username"
+                                value={ username }
+                                type="text"  
+                                placeholder="create a username" 
+                              />
+                              <i class="user icon"></i>
+                          </div>
+                        </Form.Field>
 
-          <Card className=" centered ">
-            <div className="ui center aligned pt-20">
-            <img style={{maxHeight : 100, maxWidth: 100, maring: '50'}} src='https://react.semantic-ui.com/logo.png' alt="logo" />
-            </div>
-            <h2 className="ui center aligned">FoodWeek</h2>
-            <p className="ui center aligned">Create a new account</p>
-            
-            <div className="ui grid ">
-              <div className="two wide column"></div>
-              <div className="twelve wide column inner-card ">
+                        <Form.Field>
+                          <label>email address</label>
+                            <div class="ui left icon input">
+                              <input 
+                                onChange={ handleChange }
+                                type="text"  
+                                value={ email }
+                                placeholder="your@email.com" 
+                                name="email"
+                              />
+                              <i class="envelope icon"></i>
+                          </div>
+                        </Form.Field>
 
-                <Form className="mb-20" onSubmit={(event) => this.props.signup(event, this.state)} >
-                  <Form.Field>
-                    <label>username</label>
-                      <div class="ui left icon input">
-                        <input 
-                          onChange={handleChange}
-                          name="username"
-                          value={ username }
-                          type="text"  
-                          placeholder="create a username" 
-                        />
-                        <i class="user icon"></i>
-                    </div>
-                  </Form.Field>
+                        <Form.Field>
+                          <label>password</label>
+                            <div class="ui left icon input">
+                            <input 
+                                onChange={ handleChange }
+                                type="password"  
+                                value={ password }
+                                placeholder="create a password" 
+                                name="password"
+                              />
+                              <i class="lock icon"></i>
+                          </div>
+                        </Form.Field>
 
-                  <Form.Field>
-                    <label>email address</label>
-                      <div class="ui left icon input">
-                        <input 
-                          onChange={ handleChange }
-                          type="text"  
-                          value={ email }
-                          placeholder="your@email.com" 
-                          name="email"
-                        />
-                        <i class="envelope icon"></i>
-                    </div>
-                  </Form.Field>
-
-                  <Form.Field>
-                    <label>password</label>
-                      <div class="ui left icon input">
-                      <input 
-                          onChange={ handleChange }
-                          type="password"  
-                          value={ password }
-                          placeholder="create a password" 
-                          name="password"
-                        />
-                        <i class="lock icon"></i>
-                    </div>
-                  </Form.Field>
-
-                <div style={{marginTop: '30px'}}>
-                  <button onClick={ handleSubmit } type="submit" className="ui button teal left floated">Create Account</button>
-                  <button className="ui button right floated">back</button>
+                      <div style={{marginTop: '30px'}}>
+                        <button onClick={ handleSubmit } type="submit" className="ui button teal left floated">Create Account</button>
+                        <Link to='/dashboard'><button className="ui button right floated">Back</button></Link>
+                      </div>
+                      </Form>
+                    
+                    </div >
+                    <div className="five wide column"></div>
+                  </div>
                 </div>
-                </Form>
-              
-              </div >
-              <div className="two wide column"></div>
-            </div>
-          </Card>
+              </div>
+          </Container>
 
-
-          </div>
-        <div className="five wide column"></div>
         </div>
-      </Container>
       </div>
     );
   }

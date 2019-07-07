@@ -29,7 +29,6 @@ export default class componentName extends Component {
         <div>
         < NavBar signout={this.props.signout} username={this.props.username}/>
         </div>
-        {/* <br></br> */}
       
         <div style={ sectionStyle }>
 

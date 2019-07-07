@@ -27,6 +27,7 @@ export default class ShoppingList extends Component {
   changeUserInput(input){
     this.setState({
         userInput: input,
+        
     }, 
     () => console.log(input))
   }
@@ -57,8 +58,8 @@ export default class ShoppingList extends Component {
             <div className="two wide column"></div>
               <div className="twelve wide column">
                 <Card className="centered">
-                  <div className="ui middle aligned divided itemsList">
-                    <h1 className="ui center aligned">Your shopping itemsList</h1>
+                  <div className="ui middle aligned divided itemsList mt-20">
+                    <h1 className="ui center aligned ">Your shopping itemsList</h1>
                     <div className= "ui center aligned"> 
                       <div className="ui input">
                         <input

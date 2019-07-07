@@ -11,9 +11,10 @@
   color: #61dafb;
 }
 
-.test{
+.test {
   background-color: blueviolet;
 }
+
 
 /* LIST */
 .list {
@@ -38,13 +39,40 @@
 
 
 /* LAYOUT */
+
+.mt-0{
+  margin-top: 0;
+}
+
+.mt-10{ 
+  margin-top: 10px;
+}
+
+.mt-15{
+  margin-top: 15px;
+}
+
+.mt-20{ 
+  margin-top: 20px;
+}
+
+.mt-25{
+  margin-top: 25px;
+}
+
+.mt-50{
+  margin-top: 50px;
+}
+
+.m-all-20{
+  margin: 20px;
+}
+
 .mb-20{ 
   margin-bottom: 20px;
 }
 
-.mt-20{ 
-  margin-top: 200px;
-}
+
 
 .ml-20{
   margin-left: 20px;
