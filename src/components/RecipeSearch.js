@@ -26,7 +26,6 @@ export default class RecipeSearch extends Component {
 
   }
 
-  //////////////
 
   componentDidMount = () => {
     if (!this.props.username) {
@@ -48,15 +47,12 @@ export default class RecipeSearch extends Component {
   }
 
   handleSubmit = (e) => {
+    
     e.preventDefault();
-    // const {baseUrl, searchTerm } = this.state;
     
     return this.getRecipes().then(data => {
       console.log(this.state.recipes)
     })
-    // this.setState({
-    //  url: `${baseUrl}${searchTerm}`, searchTerm: ""
-    // })
   }
 
   render() {

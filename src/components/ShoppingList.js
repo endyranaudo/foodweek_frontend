@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import NavBar from '../NavBar'
-import { Container, Card } from 'semantic-ui-react';
+import { Container, Card, Image} from 'semantic-ui-react';
 // import { Modal, Button, Image, Header } from 'semantic-ui-react';
 import '../App.css';
-
+import listHeader from '../images/shopping.jpg'
 
 
 let sectionStyle = {
   width: "100%",
   height: "100vh",
+  backgroundColor: '#EBF2E0',
+  marginTop: "14px"
 };
 
 export default class ShoppingList extends Component {
 
   state = {
     userInput: '',
-    shoppingList: []
   }
 
   componentDidMount = () => {
@@ -27,15 +28,6 @@ export default class ShoppingList extends Component {
   changeUserInput(input){
     this.setState({
         userInput: input,
-        
-    })
-  }
-
-  addToList(input){
-    let listArray = this.state.shoppingList
-    listArray.push(input)
-    this.setState({
-      shoppingList: listArray,
     })
   }
 
@@ -43,6 +35,11 @@ export default class ShoppingList extends Component {
     this.setState({
         itemList: this.props.items
     })
+  }
+  
+  submitForm(){
+    this.props.handleClickAdd(this.state.userInput)
+    this.setState({ userInput: "" })
   }
 
   render() {
@@ -55,8 +52,10 @@ export default class ShoppingList extends Component {
             <div className="two wide column"></div>
               <div className="twelve wide column">
                 <Card className="centered">
-                  <div className="ui middle aligned divided shoppingList mt-20">
-                    <h1 className="ui center aligned ">Your shopping shoppingList</h1>
+                  <div className="ui  middle aligned divided shoppingList ">
+                    <Image src={ listHeader} wrapped ui={true} />
+                    <Card.Content className="mt-20">
+                    <h1 className="ui center aligned">Your shopping shoppingList</h1>
                     <div className= "ui center aligned"> 
                       <div className="ui input">
                         <input
@@ -66,14 +65,15 @@ export default class ShoppingList extends Component {
                           onChange={ e => this.changeUserInput(e.target.value) }
                           value={this.state.userInput} 
                         />
-                        <button className="ui button teal" onClick={()=> this.props.handleClickAdd(this.state.userInput)}> add </button>
+                        <button className="ui button teal" onClick={()=> this.submitForm()}> add </button>
                       </div>
                       <div style={{marginTop: '30px', marginBottom:'30px'}} className="ui shoppingList">
                         {
-                          this.props.items.map((item) => <p className="item shoppingList"> {item} <input type="radio" name="radio" checked=""></input></p>)
+                          this.props.items.map((item) => <p className="item shoppingList"> {item.name} <input type="radio" name="radio" checked=""></input></p>)
                         }
                       </div>
                     </div>
+                   </Card.Content>
                   </div>
                 </Card>
               </div>
@@ -85,18 +85,3 @@ export default class ShoppingList extends Component {
     )
   }
 }
-
-
-
-// eslint-disable-next-line
-{/* <Modal trigger={<Button>Show Modal</Button>}>
-  <Modal.Header>Select a Photo</Modal.Header>
-    <Modal.Content image>
-      <Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' />
-        <Modal.Description>
-          <Header>Default Profile Image</Header>
-            <p>We've found the following gravatar image associated with your e-mail address.</p>
-            <p>Is it okay to use this photo?</p>
-        </Modal.Description>
-    </Modal.Content>
-</Modal> */}

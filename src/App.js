@@ -14,14 +14,16 @@ import { withRouter, Route, Switch } from 'react-router-dom'
 import { validate } from './services/api'
 // import { Link } from 'react-router-dom'
 
-const baserURL = "http://localhost:3000"
-const usersURL = `${baserURL}/users`
-const userIngredientsURL = `${baserURL}/user_ingredients`
+const baseURL = "http://localhost:3000"
+const usersURL = `${baseURL}/users`
+const userIngredientsURL = `${baseURL}/user_ingredients`
+
 
 class App extends Component {
 
   state = {
     username: '',
+    picture_url: '',
     ingredients : [],
     schedules: []
   }
@@ -42,7 +44,7 @@ class App extends Component {
   // SIGNIN & SIGNOUT ########
 
   signin = (user) => {
-    this.setState({ username: user.username }) 
+    this.setState({ username: user.username, picture_url: user.picture_url }) 
     this.props.history.push('/dashboard')
     localStorage.setItem('token', user.token)
   }
@@ -79,26 +81,26 @@ class App extends Component {
 
   // ADD ITEMS TO LIST
 
-  addItemToList = ingredient => {
-    if (!this.state.ingredients.find(i => i.name === ingredient.name)) {
-
-      this.findCurrentUser(this.state.currentUser)
+  addItemToList = ingredientName => {
+    if (!this.state.ingredients.find(i => i.name.toLowerCase() === ingredientName.toLowerCase())) {
+      console.log('INGREDIENT')
+      this.findCurrentUser(this.state.username)
       .then(user => {
         const newListItem = {
-          ingredient_id: ingredient.id,
-          user_id: user.id
+          user_id: user.id,
+          ingredient_name: ingredientName
         }
         this.createShoppingListItemBackend(newListItem)
-        this.findItemInIngredients(newListItem)})
+        .then(newIngredient => {
+          this.setState({ ingredients: [...this.state.ingredients, newIngredient] })
+        })
+      })
     }
   }
 
-  findItemInIngredients = item => {
-    const selectedIngredient = this.state.ingredients.find(i => i.id === item.ingredient_id)
-    this.setState({ ingredients: [...this.state.ingredients, selectedIngredient] })
-  }
 
   createShoppingListItemBackend = item => {
+    console.log(item)
     return fetch(userIngredientsURL, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -107,6 +109,13 @@ class App extends Component {
     .then(resp => resp.json())
   }
 
+  findCurrentUser = user => {
+    return fetch(usersURL)
+    .then(resp => resp.json())
+    .then(users => users.find(u => 
+      u.name === user.name
+    ))
+  }
 
   // REMOVE ITEMS FROM LIST
 
@@ -115,18 +124,22 @@ class App extends Component {
 
 
   // INGREDIENTS ########
+
   handleClickAdd = (ingredientName) => {
-    this.setState({
-      ingredients: [...this.state.ingredients, ingredientName]
-    })
+    // this.setState({
+    //   ingredients: [...this.state.ingredients, ingredientName]
+    // })
+    this.addItemToList(ingredientName)
   }
 
+  // ###################
   render(){
     const { signin, signout } = this
-    const { username } = this.state
+    const { username, picture_url } = this.state
     return (
       <div>
         <Switch>
+          <Route exact path="/" render={props => {return(<Signin {...props} signin={signin} />)}}/>
           <Route exact path="/signin" render={props => {return(<Signin {...props} signin={signin} />)}}/>
           {/* <Route path="/signin" component={props => <Signin signin={signin} {...props} />}/> */}
           <Route exact path="/signup" render={props => {return(<SignUp {...props} signup={this.signup} />)}}/>
@@ -134,7 +147,7 @@ class App extends Component {
           <Route exact path="/search" render={props => {return(<RecipeSearch {...props} username={username} signout={signout} />)}}/>
           <Route exact path="/search/recipe/:id" render={props => {return(<RecipeDetails {...props} username={username} signout={signout} handleClickAdd={this.handleClickAdd} />)}}/>
           <Route exact path="/list" render={props => {return(<ShoppingList {...props} username={username} signout={signout} items={this.state.ingredients} handleClickAdd={this.handleClickAdd} />)}}/>
-          <Route exact path="/user" render={props => {return(<UserProfile {...props} username={username} signout={signout} />)}}/>
+          <Route exact path="/user" render={props => {return(<UserProfile {...props} username={username} picture_url={picture_url} signout={signout} />)}}/>
           {/* <Route component={() => <h1>PAGE NOT FOUND!<h1/>} /> */}
         </ Switch>
       </div>

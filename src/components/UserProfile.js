@@ -39,7 +39,7 @@ export default class componentName extends Component {
 
               <Card className="six wide column right">
 
-                <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
+                <Image src={this.props.picture_url} wrapped ui={false} />
                 <Card.Content>
                   <Card.Header>{this.props.username}</Card.Header>
                   {/* <Card.Meta>

@@ -40,6 +40,7 @@
 
 /* LAYOUT */
 
+/* MARGIN TOP */
 .mt-0{
   margin-top: 0;
 }
@@ -60,28 +61,45 @@
   margin-top: 25px;
 }
 
+.mt-30{
+  margin-top: 30px
+}
+
 .mt-50{
   margin-top: 50px;
 }
 
+/* MARGIN ALL */
 .m-all-20{
   margin: 20px;
+}
+
+/* MARGIN BOTTOM */
+
+.mb-10{
+  margin-bottom: 10px;
 }
 
 .mb-20{ 
   margin-bottom: 20px;
 }
 
+.mb-30{
+  margin-bottom: 30px;
+}
+
+/* MARGIN LEFT */
 .ml-10{
   margin-left: 10px;
 }
 
-.mr-10{
-  margin-right: 10px;
-}
-
 .ml-20{
   margin-left: 20px;
+}
+
+/* MARGIN RIGHT */
+.mr-10{
+  margin-right: 10px;
 }
 
 .mr-20{
@@ -89,6 +107,7 @@
 }
 
 
+/* PADDINGS */
 .pt-20{
   padding-top: 20px;
 }

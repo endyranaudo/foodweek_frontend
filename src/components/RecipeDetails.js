@@ -3,6 +3,7 @@ import RecipeIngredients from './RecipeIngredients'
 import RecipeInstructions from './RecipeInstructions'
 import { getRecipeDetails } from '../services/api';
 import NavBar from '../NavBar';
+import { Container } from 'semantic-ui-react';
 
 
 
@@ -33,20 +34,23 @@ class RecipeDetails extends Component {
     return (
       <div>
         < NavBar signout={this.props.signout} username={this.props.username}/>
-        <div>
-        { 
-          this.state.recipeIngredients.map(ingredient =>  
-            <RecipeIngredients 
-                // amount={ingredient.amount}
-                // unit={ingredient.unit}
-                name={ingredient.name}
-                originalString={ingredient.originalString}
-                handleClickAdd={this.props.handleClickAdd}
-            />
-          )
-        }
-        </div>
-        <RecipeInstructions instructions={this.state.recipeInstructions} />
+          <div>
+            <Container>
+              <h2>Ingredients</h2>
+              { 
+                this.state.recipeIngredients.map(ingredient => 
+                <RecipeIngredients 
+                    // amount={ingredient.amount}
+                    // unit={ingredient.unit}
+                    name={ingredient.name}
+                    originalString={ingredient.originalString}
+                    handleClickAdd={this.props.handleClickAdd}
+                />
+                )
+              }
+                <RecipeInstructions instructions={this.state.recipeInstructions} />
+            </Container> 
+          </div>
       </div>
     )
   }

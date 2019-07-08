@@ -3,7 +3,8 @@ import React from 'react';
 const RecipeInstructions = (props) => (
 
   <div>
-    name: {props.instructions}<br></br>
+    <h2>Preparation</h2>
+    {props.instructions}<br></br>
   </div>
 
 )
