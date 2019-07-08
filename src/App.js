@@ -11,12 +11,13 @@ import RecipeSearch from './components/RecipeSearch'
 import RecipeDetails from './components/RecipeDetails';
 
 import { withRouter, Route, Switch } from 'react-router-dom'
-import { validate } from './services/api'
-// import { Link } from 'react-router-dom'
+import { validate, defaultOptions, defaultHeaders } from './services/api'
 
 const baseURL = "http://localhost:3000"
 const usersURL = `${baseURL}/users`
 const userIngredientsURL = `${baseURL}/user_ingredients`
+// const ingredientsURL = `${baseURL}/ingredients`
+const usersingredientsURL = `${baseURL}/user/ingredients`
 
 
 class App extends Component {
@@ -25,7 +26,7 @@ class App extends Component {
     username: '',
     picture_url: '',
     ingredients : [],
-    schedules: []
+    // schedules: []
   }
 
   componentDidMount () {
@@ -44,9 +45,12 @@ class App extends Component {
   // SIGNIN & SIGNOUT ########
 
   signin = (user) => {
-    this.setState({ username: user.username, picture_url: user.picture_url }) 
+    this.setState({ user_id: user.id, username: user.username, picture_url: user.picture_url }) 
     this.props.history.push('/dashboard')
     localStorage.setItem('token', user.token)
+    fetch(usersingredientsURL, defaultOptions())
+      .then(resp => resp.json())
+      .then( users_ingredients => this.setState({ingredients: users_ingredients}))
   }
 
   signout = () => {
@@ -82,18 +86,17 @@ class App extends Component {
   // ADD ITEMS TO LIST
 
   addItemToList = ingredientName => {
-    if (!this.state.ingredients.find(i => i.name.toLowerCase() === ingredientName.toLowerCase())) {
+    let foundIngredient = this.state.ingredients.find(i => i.name.toLowerCase() === ingredientName.toLowerCase())
+
+    if (!foundIngredient) {
       console.log('INGREDIENT')
-      this.findCurrentUser(this.state.username)
-      .then(user => {
-        const newListItem = {
-          user_id: user.id,
-          ingredient_name: ingredientName
-        }
-        this.createShoppingListItemBackend(newListItem)
-        .then(newIngredient => {
-          this.setState({ ingredients: [...this.state.ingredients, newIngredient] })
-        })
+      const newListItem = {
+        user_id: this.state.user_id,
+        ingredient_name: ingredientName
+      }
+      this.createShoppingListItemBackend(newListItem)
+      .then(newIngredient => {
+        this.setState({ ingredients: [...this.state.ingredients, newIngredient] })
       })
     }
   }
@@ -103,19 +106,22 @@ class App extends Component {
     console.log(item)
     return fetch(userIngredientsURL, {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: defaultHeaders({'Content-Type': 'application/json'}),
       body: JSON.stringify(item)
     })
     .then(resp => resp.json())
   }
 
-  findCurrentUser = user => {
+  findCurrentUser = username => {
     return fetch(usersURL)
     .then(resp => resp.json())
     .then(users => users.find(u => 
-      u.name === user.name
+      u.username === username
     ))
   }
+
+
+  // FETCH INGREDIENTS from Backend
 
   // REMOVE ITEMS FROM LIST
 
@@ -126,13 +132,11 @@ class App extends Component {
   // INGREDIENTS ########
 
   handleClickAdd = (ingredientName) => {
-    // this.setState({
-    //   ingredients: [...this.state.ingredients, ingredientName]
-    // })
     this.addItemToList(ingredientName)
   }
 
   // ###################
+
   render(){
     const { signin, signout } = this
     const { username, picture_url } = this.state

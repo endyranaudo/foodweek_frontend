@@ -3,6 +3,13 @@
 const baseUrl = 'http://localhost:3000'
 const signinUrl = baseUrl + '/signin'
 
+export const defaultHeaders = (more) =>  ({ 'Authorization': localStorage.token, ...more })
+export const defaultOptions = (options) => ({
+  method: 'get',
+  headers: defaultHeaders({'Accept':'application/json'}),
+  ...options
+})
+
 export function signin (username, password){
   return fetch(signinUrl, {
     method: 'POST',
@@ -13,9 +20,7 @@ export function signin (username, password){
 
 
 export function validate () {
-  return fetch('http://localhost:3000/validate', {
-    headers: { 'Authorisation': localStorage.token },
-  }).then(resp => resp.json())
+  return fetch('http://localhost:3000/validate', defaultOptions({ method: 'post' })).then(resp => resp.json())
 }
 
 export default { signin, validate }
