@@ -16,13 +16,14 @@ import { validate, defaultOptions, defaultHeaders } from './services/api'
 const baseURL = "http://localhost:3000"
 const usersURL = `${baseURL}/users`
 const userIngredientsURL = `${baseURL}/user_ingredients`
-// const ingredientsURL = `${baseURL}/ingredients`
+const ingredientsURL = `${baseURL}/ingredients`
 const usersingredientsURL = `${baseURL}/user/ingredients`
 
 
 class App extends Component {
 
   state = {
+    user_id: null,
     username: '',
     picture_url: '',
     ingredients : [],
@@ -45,6 +46,7 @@ class App extends Component {
   // SIGNIN & SIGNOUT ########
 
   signin = (user) => {
+    console.log(user)
     this.setState({ user_id: user.id, username: user.username, picture_url: user.picture_url }) 
     this.props.history.push('/dashboard')
     localStorage.setItem('token', user.token)
@@ -121,12 +123,41 @@ class App extends Component {
   }
 
 
-  // FETCH INGREDIENTS from Backend
-
   // REMOVE ITEMS FROM LIST
 
+  removeItemFromList = ingredient => {
+    const remainingItems = this.state.ingredients.filter(i => i.id !== ingredient.id)
+    setTimeout(() => this.setState({ ingredients: remainingItems }), 800);
+    
+    this.findCurrentUser(this.state.username)
+      .then(user => {
+        // debugger
+        const ret = fetch(usersingredientsURL, defaultOptions())
+        .then(resp => resp.json())
+        .then(items => {
+          // debugger
+          const itemToDelete = items.find(i => i.id === ingredient.id)
+          this.removeIngredientsBackend(itemToDelete)
+        })
+        return ret
+      })
+    
+        // return fetch(ingredientsURL)
+        // .then(resp => resp.json())
+        // .then(items => {
+        //   debugger
+        //   const itemToDelete = items.find(i => i.user_id === this.state.user_id && i.ingredient_id === ingredient.id)
+        //   this.removeIngredientsBackend(itemToDelete)
+        // })
 
+    }
 
+  removeIngredientsBackend = item => {
+    fetch(`${ingredientsURL}/${item.id}`, {
+      method: 'DELETE',
+    })
+    .then(resp => resp.json())
+  }
 
 
   // INGREDIENTS ########
@@ -150,7 +181,7 @@ class App extends Component {
           <Route exact path="/dashboard" render={props => {return(<Dashboard {...props} username={username} signout={signout} />)}}/>
           <Route exact path="/search" render={props => {return(<RecipeSearch {...props} username={username} signout={signout} />)}}/>
           <Route exact path="/search/recipe/:id" render={props => {return(<RecipeDetails {...props} username={username} signout={signout} handleClickAdd={this.handleClickAdd} />)}}/>
-          <Route exact path="/list" render={props => {return(<ShoppingList {...props} username={username} signout={signout} items={this.state.ingredients} handleClickAdd={this.handleClickAdd} />)}}/>
+          <Route exact path="/list" render={props => {return(<ShoppingList {...props} username={username} signout={signout} items={this.state.ingredients} removeItem={this.removeItemFromList} handleClickAdd={this.handleClickAdd} />)}}/>
           <Route exact path="/user" render={props => {return(<UserProfile {...props} username={username} picture_url={picture_url} signout={signout} />)}}/>
           {/* <Route component={() => <h1>PAGE NOT FOUND!<h1/>} /> */}
         </ Switch>

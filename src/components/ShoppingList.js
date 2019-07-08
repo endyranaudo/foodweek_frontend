@@ -69,7 +69,7 @@ export default class ShoppingList extends Component {
                       </div>
                       <div style={{marginTop: '30px', marginBottom:'30px'}} className="ui shoppingList">
                         {
-                          this.props.items.map((item) => <p className="item shoppingList"> {item.name} <input type="radio" name="radio" checked=""></input></p>)
+                          this.props.items.map((item) => <p className="item shoppingList"> {item.name} <input onClick={() => this.props.removeItem(item)} type="checkbox" className="checkbox"></input></p>)
                         }
                       </div>
                     </div>

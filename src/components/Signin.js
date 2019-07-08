@@ -61,7 +61,7 @@ export default class Signin extends Component {
                 <Form className="mb-20">
                   <Form.Field>
                     <label>Username</label>
-                      <div class="ui left icon input">
+                      <div className="ui left icon input">
                         <input 
                           id= 'usernameInput'
                           type="text"  
@@ -70,13 +70,13 @@ export default class Signin extends Component {
                           onChange={handleChange}
                           name="username"
                         />
-                        <i class="user icon"></i>
+                        <i className="user icon"></i>
                     </div>
                   </Form.Field>
 
                   <Form.Field>
                     <label>Password</label>
-                      <div class="ui left icon input">
+                      <div className="ui left icon input">
                       <input 
                           id= 'passwordInput'
                           type="password"  
@@ -85,7 +85,7 @@ export default class Signin extends Component {
                           onChange={ handleChange }
                           name="password"
                         />
-                        <i class="lock icon"></i>
+                        <i className="lock icon"></i>
                     </div>
                   </Form.Field>
                 </Form>
