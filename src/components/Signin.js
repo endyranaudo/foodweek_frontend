@@ -100,7 +100,7 @@ export default class Signin extends Component {
 
                 {/* ADD MARGIN BOTTOM 20PX */}
                 <div style={{marginTop: '30px'}}>
-                  <button onClick={ handleSubmit } className="ui button teal left floated">Signin</button>
+                  <button onClick={ handleSubmit } className="ui button teal left floated">Sign in</button>
                   < Link to='/signup' ><button className="ui button right floated">New user?</button></Link>
                 </div>
               

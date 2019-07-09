@@ -28,12 +28,12 @@ export default class componentName extends Component {
     return (
       <div>
         <div>
-        < NavBar signout={this.props.signout} username={this.props.username}/>
+          < NavBar signout={this.props.signout} username={this.props.username}/>
         </div>
       
         <div style={ sectionStyle }>
 
-          <Container className="element">
+          <Container className="element-list">
             <div className="ui grid">
             <div className="five wide column"></div>
 

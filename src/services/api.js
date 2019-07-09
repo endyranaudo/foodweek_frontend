@@ -28,7 +28,7 @@ export default { signin, validate }
 // +++++++++++++++++++++++ SEARCH RECIPE ++++++++++++++++++++
 
 const getRecipes = (searchTerm) => {
-  const url = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query=${searchTerm}`
+  const url = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?number=4&query=${searchTerm}`
   return fetch(url, {
     headers: {
       "X-RapidAPI-Host" : "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",

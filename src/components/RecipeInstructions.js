@@ -2,9 +2,11 @@ import React from 'react';
 
 const RecipeInstructions = (props) => (
 
-  <div>
+  <div className="mt-30 mb-30">
     <h2>Preparation</h2>
-    {props.instructions}<br></br>
+    <div style={{fontSize: '1.1em', lineHeight: '1.6em'}}>
+      {props.instructions}
+    </div>
   </div>
 
 )

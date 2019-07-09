@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import './App.css';
 
 import Dashboard from './components/Dashboard'
+import Landing from './components/Landing'
 import ShoppingList from './components/ShoppingList'
 import Signin from './components/Signin';
 import SignUp from './components/SignUp'
@@ -35,13 +36,26 @@ class App extends Component {
       validate()
         .then( data => {
           if (data.error){
-            alert(data.error)
+            // (data.error)
           } else {
             this.signin(data)
           }
         })
     }
   }
+
+  // componentDidUpdate () {
+  //   if(localStorage.token) {
+  //     validate()
+  //       .then( data => {
+  //         if (data.error){
+  //           alert(data.error)
+  //         } else {
+  //           this.signin(data)
+  //         }
+  //       })
+  //   }
+  // }
 
   // SIGNIN & SIGNOUT ########
 
@@ -91,7 +105,6 @@ class App extends Component {
     let foundIngredient = this.state.ingredients.find(i => i.name.toLowerCase() === ingredientName.toLowerCase())
 
     if (!foundIngredient) {
-      console.log('INGREDIENT')
       const newListItem = {
         user_id: this.state.user_id,
         ingredient_name: ingredientName
@@ -105,7 +118,7 @@ class App extends Component {
 
 
   createShoppingListItemBackend = item => {
-    console.log(item)
+    // console.log(item)
     return fetch(userIngredientsURL, {
       method: 'POST',
       headers: defaultHeaders({'Content-Type': 'application/json'}),
@@ -127,7 +140,7 @@ class App extends Component {
 
   removeItemFromList = ingredient => {
     const remainingItems = this.state.ingredients.filter(i => i.id !== ingredient.id)
-    setTimeout(() => this.setState({ ingredients: remainingItems }), 800);
+    setTimeout(() => this.setState({ ingredients: remainingItems }), 500);
     
     this.findCurrentUser(this.state.username)
       .then(user => {
@@ -141,15 +154,6 @@ class App extends Component {
         })
         return ret
       })
-    
-        // return fetch(ingredientsURL)
-        // .then(resp => resp.json())
-        // .then(items => {
-        //   debugger
-        //   const itemToDelete = items.find(i => i.user_id === this.state.user_id && i.ingredient_id === ingredient.id)
-        //   this.removeIngredientsBackend(itemToDelete)
-        // })
-
     }
 
   removeIngredientsBackend = item => {
@@ -157,6 +161,7 @@ class App extends Component {
       method: 'DELETE',
     })
     .then(resp => resp.json())
+
   }
 
 
@@ -169,13 +174,13 @@ class App extends Component {
   // ###################
 
   render(){
-    const { signin, signout } = this
+    const { signout } = this
     const { username, picture_url } = this.state
     return (
       <div>
         <Switch>
-          <Route exact path="/" render={props => {return(<Signin {...props} signin={signin} />)}}/>
-          <Route exact path="/signin" render={props => {return(<Signin {...props} signin={signin} />)}}/>
+          <Route exact path="/" render={props => {return(<Landing {...props} />)}}/>
+          <Route exact path="/signin" render={props => {return(<Signin {...props} signin={this.signin} />)}}/>
           {/* <Route path="/signin" component={props => <Signin signin={signin} {...props} />}/> */}
           <Route exact path="/signup" render={props => {return(<SignUp {...props} signup={this.signup} />)}}/>
           <Route exact path="/dashboard" render={props => {return(<Dashboard {...props} username={username} signout={signout} />)}}/>

@@ -7,19 +7,19 @@ import { getRecipes } from '../services/api'
 export default class RecipeSearch extends Component {
 
   state = {
-    recipes: [
-      {id:'107878', title:'Garlic Chicken Lorem ipsum dolor sit amet, consectetur adipiscing elit', readyInMinutes:4, servings:4},
-      {id:'107878', title:'Garlic Chicken Lorem ipsum dolor sit amet, consectetur adipiscing elit', readyInMinutes:4, servings:4},
-      {id:'107878', title:'Garlic Chicken Lorem ipsum dolor sit amet, consectetur adipiscing elit', readyInMinutes:4, servings:4},
-      {id:'107878', title:'Garlic Chicken Lorem ipsum dolor sit amet, consectetur adipiscing elit', readyInMinutes:4, servings:4},
-      {id:'107878', title:'Garlic Chicken Lorem ipsum dolor sit amet, consectetur adipiscing elit', readyInMinutes:4, servings:4},
-      {id:'107878', title:'Garlic Chicken Lorem ipsum dolor sit amet, consectetur adipiscing elit', readyInMinutes:4, servings:4},
-      {id:'107878', title:'Garlic Chicken Lorem ipsum dolor sit amet, consectetur adipiscing elit', readyInMinutes:4, servings:4},
-      {id:'107878', title:'Garlic Chicken Lorem ipsum dolor sit amet, consectetur adipiscing elit', readyInMinutes:4, servings:4},
-      {id:'107878', title:'Garlic Chicken Lorem ipsum dolor sit amet, consectetur adipiscing elit', readyInMinutes:4, servings:4},
-      {id:'107878', title:'Garlic Chicken Lorem ipsum dolor sit amet, consectetur adipiscing elit', readyInMinutes:4, servings:4},
-    ],
-    // recipes: [],
+    // recipes: [
+    //   {id:'107878', title:'Garlic Chicken Lorem ipsum dolor sit amet, consectetur adipiscing elit', readyInMinutes:4, servings:4},
+    //   {id:'107878', title:'Garlic Chicken Lorem ipsum dolor sit amet, consectetur adipiscing elit', readyInMinutes:4, servings:4},
+    //   {id:'107878', title:'Garlic Chicken Lorem ipsum dolor sit amet, consectetur adipiscing elit', readyInMinutes:4, servings:4},
+    //   {id:'107878', title:'Garlic Chicken Lorem ipsum dolor sit amet, consectetur adipiscing elit', readyInMinutes:4, servings:4},
+    //   {id:'107878', title:'Garlic Chicken Lorem ipsum dolor sit amet, consectetur adipiscing elit', readyInMinutes:4, servings:4},
+    //   {id:'107878', title:'Garlic Chicken Lorem ipsum dolor sit amet, consectetur adipiscing elit', readyInMinutes:4, servings:4},
+    //   {id:'107878', title:'Garlic Chicken Lorem ipsum dolor sit amet, consectetur adipiscing elit', readyInMinutes:4, servings:4},
+    //   {id:'107878', title:'Garlic Chicken Lorem ipsum dolor sit amet, consectetur adipiscing elit', readyInMinutes:4, servings:4},
+    //   {id:'107878', title:'Garlic Chicken Lorem ipsum dolor sit amet, consectetur adipiscing elit', readyInMinutes:4, servings:4},
+    //   {id:'107878', title:'Garlic Chicken Lorem ipsum dolor sit amet, consectetur adipiscing elit', readyInMinutes:4, servings:4},
+    // ],
+    recipes: [],
     recipe_id: null,
     searchTerm: '',
     baseUrl: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query='
@@ -51,7 +51,7 @@ export default class RecipeSearch extends Component {
     e.preventDefault();
     
     return this.getRecipes().then(data => {
-      console.log(this.state.recipes)
+      // console.log(this.state.recipes)
     })
   }
 

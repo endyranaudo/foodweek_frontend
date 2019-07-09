@@ -15,6 +15,9 @@
   background-color: blueviolet;
 }
 
+.backImg{
+  background-color: aquamarine
+}
 
 /* LIST */
 .list {
@@ -33,6 +36,12 @@
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.element-list {
+  position: relative;
+  top: 5%;
+  /* transform: translateY(-90%); */
 }
 
 /* OTHER */

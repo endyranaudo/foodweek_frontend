@@ -45,15 +45,16 @@ export default class ShoppingList extends Component {
   render() {
     return (
       <div>
-        < NavBar signout={this.props.signout} username={this.props.username}/>
+        <div>
+          < NavBar signout={this.props.signout} username={this.props.username}/>
+        </div>
         <div style={ sectionStyle }>
-          <Container className="element">
+          <Container className="element-list">
             <div className="ui grid"> 
-            <div className="two wide column"></div>
-              <div className="twelve wide column">
+              <div className="sixteen wide column">
                 <Card className="centered">
+                    <Image src={ listHeader} wrapped ui={false} />
                   <div className="ui  middle aligned divided shoppingList ">
-                    <Image src={ listHeader} wrapped ui={true} />
                     <Card.Content className="mt-20">
                     <h1 className="ui center aligned">Your shopping shoppingList</h1>
                     <div className= "ui center aligned"> 
@@ -67,7 +68,7 @@ export default class ShoppingList extends Component {
                         />
                         <button className="ui button teal" onClick={()=> this.submitForm()}> add </button>
                       </div>
-                      <div style={{marginTop: '30px', marginBottom:'30px'}} className="ui shoppingList">
+                      <div style={{marginTop: '30px', marginBottom:'30px', fontSize: '1.2em'}} className="ui shoppingList">
                         {
                           this.props.items.map((item) => <p className="item shoppingList"> {item.name} <input onClick={() => this.props.removeItem(item)} type="checkbox" className="checkbox"></input></p>)
                         }
@@ -77,7 +78,6 @@ export default class ShoppingList extends Component {
                   </div>
                 </Card>
               </div>
-            <div className="two wide column"></div>
             </div>
           </Container>
         </div>
