@@ -83,7 +83,23 @@ export default class RecipeSearch extends Component {
               {/* SHOW RESULTS RECIPE SEARCH */}
                 <Card.Group className="ui grid" itemsPerRow={4}>
                   {
-                    this.state.recipes.map(recipe => <RecipeCard recipe={recipe} ingredients={this.props.ingredients}/>)
+                    this.state.recipes.map(recipe => <RecipeCard mealOptions={this.props.schedule.reduce((mealOptions, dayObj) => {
+                      if (!dayObj.meals[0].recipe) {
+                      mealOptions.push({
+                        key: `${dayObj.name} ${dayObj.meals[0].name}`,
+                        text: `${dayObj.name} ${dayObj.meals[0].name}`,
+                        value: `${dayObj.name} ${dayObj.meals[0].name}`
+                      })
+                    }
+                      if (!dayObj.meals[1].recipe) {
+                      mealOptions.push({
+                        key: `${dayObj.name} ${dayObj.meals[1].name}`,
+                        text: `${dayObj.name} ${dayObj.meals[1].name}`,
+                        value: `${dayObj.name} ${dayObj.meals[1].name}`
+                      })
+                    }
+                      return mealOptions
+                    }, [])} addRecipe={(day, meal) => this.props.addRecipe(recipe, day, meal)} recipe={recipe} ingredients={this.props.ingredients}/>)
                   } 
                 </Card.Group>
 

@@ -28,7 +28,7 @@ export default class Signin extends Component {
           alert(data.error)
         } else {
           this.props.signin(data)
-          // this.props.history.push('/dashboard')
+          this.props.history.push('/dashboard')
         }
       })
   }

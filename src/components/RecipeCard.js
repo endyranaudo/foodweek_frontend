@@ -1,15 +1,27 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
-import { Card, Image } from 'semantic-ui-react';
+import { Card, Image, Dropdown } from 'semantic-ui-react';
 import RecipeDetailsLink from './RecipeDetailsLink';
+
 
 class RecipeCard extends Component {
 
-  // componentDidMount = () => {
-  //   if (!this.props.username) {
-  //     this.props.history.push('/signin')
-  //   }
-  // }
+  state = {
+    selectedMeal: null
+  }
+
+
+
+  add = () => {
+    const splitText = this.state.selectedMeal.split(" ")
+    this.props.addRecipe(splitText[0], splitText[1])
+  }
+
+  changeSelected = (e, { value }) => {
+    this.setState({
+      selectedMeal: value
+    })
+  }
 
   render() {
 
@@ -29,7 +41,15 @@ class RecipeCard extends Component {
           </Card.Description>
         </Card.Content>
         <Card.Content extra className="">
-          <div className="ui red inverted button left flaoted ">
+        <Dropdown
+          placeholder='Select Friend'
+          fluid
+          selection
+          options={this.props.mealOptions}
+          value={this.state.selectedMeal}
+          onChange={this.changeSelected}
+        />
+          <div className="ui red inverted button left floated " onClick={this.add}>
             <i className="file ouline icon"></i> Add it!
           </div>
           <div className="ui teal button right floated ">

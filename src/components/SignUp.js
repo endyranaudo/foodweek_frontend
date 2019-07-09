@@ -22,11 +22,6 @@ export default class Signup extends Component {
     password: ''
   }
 
-  // componentDidMount = () => {
-  //   if (!this.props.username) {
-  //     this.props.history.push('/signin')
-  //   }
-  // }
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value })

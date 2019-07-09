@@ -12,26 +12,26 @@ class RecipeDetails extends Component {
   
   state = {
     recipeIngredients:[],
-    recipeInstructions:'Preparation Rub the chicken with paprika, salt, and pepper and set aside at room temperature for at least 1 hour or preferably in the refrigerator at least 8 hours or overnight.Preheat the oven to 400°F. '
+    recipeInstructions:''
   }
 
   getRecipeDetails () {
     // OLD WAY
     // const recipeId = window.location.pathname.split('/')[3];
     const recipeId = this.props.match.params.id
-    return getRecipeDetails(recipeId).then((recipeDetails) => {   
+    getRecipeDetails(recipeId).then((recipeDetails) => {   
        this.setState({recipeInstructions:recipeDetails.instructions, recipeIngredients:recipeDetails.extendedIngredients});
     });
+    console.log(this.state)
   }
 
-  componentDidMount () {
-    return this.getRecipeDetails()
-  }
+ 
 
   componentDidMount = () => {
     if (!this.props.username) {
       this.props.history.push('/signin')
     }
+    this.getRecipeDetails()
   }
 
   // http://localhost:3001/search/recipe/104385

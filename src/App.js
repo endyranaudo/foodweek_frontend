@@ -20,6 +20,25 @@ const userIngredientsURL = `${baseURL}/user_ingredients`
 const ingredientsURL = `${baseURL}/ingredients`
 const usersingredientsURL = `${baseURL}/user/ingredients`
 
+const emptySchedule = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+].map(dayName => ({
+  name: dayName,
+  meals: [
+    {
+      name: "Lunch",
+      recipe: null
+    },
+    {
+      name: "Dinner",
+      recipe: null
+    }
+  ]
+}))
 
 class App extends Component {
 
@@ -28,11 +47,28 @@ class App extends Component {
     username: '',
     picture_url: '',
     ingredients : [],
-    // schedules: []
+    schedule: localStorage.schedule ? JSON.parse(localStorage.schedule) : [...emptySchedule]
+  }
+
+  addRecipe = (recipe, dayName, mealName) => {
+    this.setState({
+      schedule: this.state.schedule.map(day => {
+        if (day.name !== dayName) return day;
+        day.meals = day.meals.map(meal => {
+          if (meal.name !== mealName) return meal;
+          meal.recipe = recipe
+          return meal;
+        })
+        return day;
+      })
+    }, () => {
+      localStorage.setItem('schedule', JSON.stringify(this.state.schedule))
+    })
   }
 
   componentDidMount () {
     if(localStorage.token) {
+      // debugger
       validate()
         .then( data => {
           if (data.error){
@@ -70,9 +106,10 @@ class App extends Component {
   }
 
   signout = () => {
-    this.setState({ username: '' }) 
+    this.setState({ username: '', schedule: [...emptySchedule] }) 
     // this.props.history.push('/signin')
     localStorage.removeItem('token')
+    localStorage.removeItem('schedule')
   }
 
 
@@ -174,8 +211,8 @@ class App extends Component {
   // ###################
 
   render(){
-    const { signout } = this
-    const { username, picture_url } = this.state
+    const { signout, addRecipe } = this
+    const { username, picture_url, schedule } = this.state
     return (
       <div>
         <Switch>
@@ -183,8 +220,8 @@ class App extends Component {
           <Route exact path="/signin" render={props => {return(<Signin {...props} signin={this.signin} />)}}/>
           {/* <Route path="/signin" component={props => <Signin signin={signin} {...props} />}/> */}
           <Route exact path="/signup" render={props => {return(<SignUp {...props} signup={this.signup} />)}}/>
-          <Route exact path="/dashboard" render={props => {return(<Dashboard {...props} username={username} signout={signout} />)}}/>
-          <Route exact path="/search" render={props => {return(<RecipeSearch {...props} username={username} signout={signout} />)}}/>
+          <Route exact path="/dashboard" render={props => {return(<Dashboard {...props} username={username} signout={signout} schedule={schedule}/>)}}/>
+          <Route exact path="/search" render={props => {return(<RecipeSearch {...props} username={username} signout={signout} addRecipe={addRecipe} schedule={schedule}/>)}}/>
           <Route exact path="/search/recipe/:id" render={props => {return(<RecipeDetails {...props} username={username} signout={signout} handleClickAdd={this.handleClickAdd} />)}}/>
           <Route exact path="/list" render={props => {return(<ShoppingList {...props} username={username} signout={signout} items={this.state.ingredients} removeItem={this.removeItemFromList} handleClickAdd={this.handleClickAdd} />)}}/>
           <Route exact path="/user" render={props => {return(<UserProfile {...props} username={username} picture_url={picture_url} signout={signout} />)}}/>

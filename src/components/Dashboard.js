@@ -29,6 +29,25 @@ export default class Dashboard extends Component {
   render() {
     const { activeItem } = this.state
     const { open, dimmer } = this.state
+    const { schedule } = this.props
+
+    const mealCell = meal => {
+      return <td>
+      <span className="mr-20">
+        {
+          meal.name
+          }
+        </span>
+        <span className="mr-20">
+        {
+          meal.recipe ? 
+          <Link to={`/search/recipe/${meal.recipe.id}`}>{meal.recipe.title}</Link> : 
+          <Link to={`/search`}>Find a recipe!</Link>
+        }
+        </span>
+        </td>                          
+
+    }
     
     return (
       <div>
@@ -40,40 +59,20 @@ export default class Dashboard extends Component {
                 <table style={{background: '#fff'}}className="ui fixed single line celled table center aligned striped teal">
                   <thead>
                     <tr className="table-head">
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday </th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
+                      {
+                        schedule.map(dayObj => <th>{dayObj.name}</th>)
+                      }
                   </tr></thead>
                   <tbody>
                     <tr>
-                      <td><span className="mr-20">LUNCH</span><Link to='/search'><i className="edit icon color teal"></i></Link></td>
-                      <td><span className="mr-20">LUNCH</span><Link to='/search'><i className="edit icon color teal"></i></Link></td>
-                      <td><span className="mr-20">LUNCH</span><Link to='/search'><i className="edit icon color teal"></i></Link></td>
-                      <td><span className="mr-20">LUNCH</span><Link to='/search'><i className="edit icon color teal"></i></Link></td>
-                      <td><span className="mr-20">LUNCH</span><Link to='/search'><i className="edit icon color teal"></i></Link></td>
+                      {
+                        schedule.map(dayObj => mealCell(dayObj.meals[0]))
+                      }
                     </tr>
                     <tr>
-                      <td><span className="mr-20">Test Food</span></td>
-                      <td><span className="mr-20">Test Food</span></td>
-                      <td><span className="mr-20">Test Food</span></td>
-                      <td><span className="mr-20">Test Food</span></td>
-                      <td><span className="mr-20">Test Food</span></td>
-                    </tr>
-                    <tr>
-                      <td><span className="mr-20">DINNER</span><Link to='/search'><i className="edit icon color teal"></i></Link></td>
-                      <td><span className="mr-20">DINNER</span><Link to='/search'><i className="edit icon color teal"></i></Link></td>
-                      <td><span className="mr-20">DINNER</span><Link to='/search'><i className="edit icon color teal"></i></Link></td>
-                      <td><span className="mr-20">DINNER</span><Link to='/search'><i className="edit icon color teal"></i></Link></td>
-                      <td><span className="mr-20">DINNER</span><Link to='/search'><i className="edit icon color teal"></i></Link></td>
-                    </tr>
-                    <tr>
-                      <td><span className="mr-20">Test Food</span></td>
-                      <td><span className="mr-20">Test Food</span></td>
-                      <td><span className="mr-20">Test Food</span></td>
-                      <td><span className="mr-20">Test Food</span></td>
-                      <td><span className="mr-20">Test Food</span></td>
+                      {
+                        schedule.map(dayObj => mealCell(dayObj.meals[1]))
+                      }
                     </tr>
                   </tbody>
                 </table>
