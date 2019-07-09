@@ -11,10 +11,12 @@
   color: #61dafb;
 }
 
-.test{
+.test {
   background-color: blueviolet;
-  height: 100px;
-  width: 100 px;
+}
+
+.backImg{
+  background-color: aquamarine
 }
 
 /* LIST */
@@ -36,20 +38,77 @@
   transform: translateY(-50%);
 }
 
+.element-list {
+  position: relative;
+  top: 5%;
+  /* transform: translateY(-90%); */
+}
+
 /* OTHER */
 
 
 /* LAYOUT */
+
+/* MARGIN TOP */
+.mt-0{
+  margin-top: 0;
+}
+
+.mt-10{ 
+  margin-top: 10px;
+}
+
+.mt-15{
+  margin-top: 15px;
+}
+
+.mt-20{ 
+  margin-top: 20px;
+}
+
+.mt-25{
+  margin-top: 25px;
+}
+
+.mt-30{
+  margin-top: 30px
+}
+
+.mt-50{
+  margin-top: 50px;
+}
+
+/* MARGIN ALL */
+.m-all-20{
+  margin: 20px;
+}
+
+/* MARGIN BOTTOM */
+
+.mb-10{
+  margin-bottom: 10px;
+}
+
 .mb-20{ 
   margin-bottom: 20px;
 }
 
-.mt-20{ 
-  margin-top: 200px;
+.mb-30{
+  margin-bottom: 30px;
+}
+
+/* MARGIN LEFT */
+.ml-10{
+  margin-left: 10px;
 }
 
 .ml-20{
   margin-left: 20px;
+}
+
+/* MARGIN RIGHT */
+.mr-10{
+  margin-right: 10px;
 }
 
 .mr-20{
@@ -57,6 +116,7 @@
 }
 
 
+/* PADDINGS */
 .pt-20{
   padding-top: 20px;
 }

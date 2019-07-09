@@ -1,35 +1,33 @@
 import React, { Component } from 'react';
 import NavBar from '../NavBar'
-import { Container, Card } from 'semantic-ui-react';
+import { Container, Card, Image} from 'semantic-ui-react';
 // import { Modal, Button, Image, Header } from 'semantic-ui-react';
 import '../App.css';
-
+import listHeader from '../images/shopping.jpg'
 
 
 let sectionStyle = {
   width: "100%",
   height: "100vh",
+  backgroundColor: '#EBF2E0',
+  marginTop: "14px"
 };
 
 export default class ShoppingList extends Component {
 
   state = {
     userInput: '',
-    itemsList: []
+  }
+
+  componentDidMount = () => {
+    if (!this.props.username) {
+      this.props.history.push('/signin')
+    }
   }
 
   changeUserInput(input){
     this.setState({
         userInput: input,
-    }, 
-    () => console.log(input))
-  }
-
-  addToList(input){
-    let listArray = this.state.itemsList
-    listArray.push(input)
-    this.setState({
-      itemsList: listArray,
     })
   }
 
@@ -37,22 +35,28 @@ export default class ShoppingList extends Component {
     this.setState({
         itemList: this.props.items
     })
-    // let userInput = document.querySelector('#userInput')
-    // userInput: ''
+  }
+  
+  submitForm(){
+    this.props.handleClickAdd(this.state.userInput)
+    this.setState({ userInput: "" })
   }
 
   render() {
     return (
       <div>
-        < NavBar signout={this.props.signout} username={this.props.username}/>
+        <div>
+          < NavBar signout={this.props.signout} username={this.props.username}/>
+        </div>
         <div style={ sectionStyle }>
-          <Container className="element">
+          <Container className="element-list">
             <div className="ui grid"> 
-            <div className="two wide column"></div>
-              <div className="twelve wide column">
+              <div className="sixteen wide column">
                 <Card className="centered">
-                  <div className="ui middle aligned divided itemsList">
-                    <h1 className="ui center aligned">Your shopping itemsList</h1>
+                    <Image src={ listHeader} wrapped ui={false} />
+                  <div className="ui  middle aligned divided shoppingList ">
+                    <Card.Content className="mt-20">
+                    <h1 className="ui center aligned">Your shopping shoppingList</h1>
                     <div className= "ui center aligned"> 
                       <div className="ui input">
                         <input
@@ -62,18 +66,18 @@ export default class ShoppingList extends Component {
                           onChange={ e => this.changeUserInput(e.target.value) }
                           value={this.state.userInput} 
                         />
-                        <button className="ui button teal" onClick={()=> this.props.handleClickAdd(this.state.userInput)}> add </button>
+                        <button className="ui button teal" onClick={()=> this.submitForm()}> add </button>
                       </div>
-                      <div style={{marginTop: '30px', marginBottom:'30px'}} className="ui itemsList">
+                      <div style={{marginTop: '30px', marginBottom:'30px', fontSize: '1.2em'}} className="ui shoppingList">
                         {
-                          this.props.items.map((item) => <p className="item itemsList"> {item} <input type="radio" name="radio" checked=""></input></p>)
+                          this.props.items.map((item) => <p className="item shoppingList"> {item.name} <input onClick={() => this.props.removeItem(item)} type="checkbox" className="checkbox"></input></p>)
                         }
                       </div>
                     </div>
+                   </Card.Content>
                   </div>
                 </Card>
               </div>
-            <div className="two wide column"></div>
             </div>
           </Container>
         </div>
@@ -81,18 +85,3 @@ export default class ShoppingList extends Component {
     )
   }
 }
-
-
-
-// eslint-disable-next-line
-{/* <Modal trigger={<Button>Show Modal</Button>}>
-  <Modal.Header>Select a Photo</Modal.Header>
-    <Modal.Content image>
-      <Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' />
-        <Modal.Description>
-          <Header>Default Profile Image</Header>
-            <p>We've found the following gravatar image associated with your e-mail address.</p>
-            <p>Is it okay to use this photo?</p>
-        </Modal.Description>
-    </Modal.Content>
-</Modal> */}

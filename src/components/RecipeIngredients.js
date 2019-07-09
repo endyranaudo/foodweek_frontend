@@ -1,17 +1,11 @@
 import React from 'react';
 
 const RecipeIngredients = (props) => (
-
-  <div>
-    <div role="list" class="ui list">
-      <div role="listitem" class="item">{props.originalString}<button onClick={() => props.handleClickAdd(props.name)}>add to list</button></div>
+  <div className="mt-30 mb-30 ">
+    
+    <div role="list" className="ui list ">
+      <span role="listitem" style={{fontSize: '1.2em'}} className="item">{props.originalString}<span><a onClick={() => props.handleClickAdd(props.name)}> <i className="icon color teal plus circle"/> </a></span></span>
     </div>
-
-
-    {/* name: {props.name}<button onClick={() => props.handleClickAdd(props.name)}>add to list</button><br></br>
-    amount: {props.amount}<br></br>
-    unit: {props.unit}<br></br> */}
-    <br></br>
 
   </div>
 

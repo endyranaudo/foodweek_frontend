@@ -11,28 +11,35 @@ let sectionStyle = {
   height: "100vh",
   backgroundImage: `url(${Background})`,
   backgroundSize: 'cover',
-  BackgroundRepeat: 'no-repeat'
+  BackgroundRepeat: 'no-repeat',
+  marginTop: "14px"
 };
 
 
 export default class componentName extends Component {
+
+  componentDidMount = () => {
+    if (!this.props.username) {
+      this.props.history.push('/signin')
+    }
+  }
+  
   render() {
     return (
       <div>
         <div>
-        < NavBar signout={this.props.signout} username={this.props.username}/>
+          < NavBar signout={this.props.signout} username={this.props.username}/>
         </div>
-        {/* <br></br> */}
       
         <div style={ sectionStyle }>
 
-          <Container className="element">
+          <Container className="element-list">
             <div className="ui grid">
             <div className="five wide column"></div>
 
               <Card className="six wide column right">
 
-                <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
+                <Image src={this.props.picture_url} wrapped ui={false} />
                 <Card.Content>
                   <Card.Header>{this.props.username}</Card.Header>
                   {/* <Card.Meta>

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Container, Form, Card } from 'semantic-ui-react';
 import '../App.css';
 import Background from '../images/food.jpg'
-import { signin } from '../api'
+import { Link } from 'react-router-dom'
+import { signin } from '../services/api'
+import logoSignin from '../images/Logo_sign_in.png'
 
 let sectionStyle = {
   width: "100%",
@@ -42,25 +44,24 @@ export default class Signin extends Component {
     return (
       <div style={ sectionStyle }>
       <Container className="element">
-        <div className="ui grid"> 
         <div className="five wide column"></div>
           <div className="six wide column">
 
           <Card className="centered">
-            <div className="ui center aligned pt-20">
-            <img style={{maxHeight : 100, maxWidth: 100, maring: '50'}} src='https://react.semantic-ui.com/logo.png' alt="logo" />
+            <div className="ui center aligned mt-20">
+            <img style={{maxHeight : 120, maxWidth: 120}} src={ logoSignin } alt="logo" />
             </div>
-            <h2 className="ui center aligned">FoodWeek</h2>
-            <p className="ui center aligned">Please log-in or sign-up for an account</p>
+              {/* <h2 className="ui center aligned">FoodWeek</h2> */}
+              <p className="ui center aligned mt-10">Please signin or create your account</p>
             
-            <div className="ui grid ">
-              <div className="two wide column"></div>
-              <div className="twelve wide column inner-card">
+              <div className="ui grid ">
+                <div className="two wide column"></div>
+                <div className="twelve wide column inner-card">
 
                 <Form className="mb-20">
                   <Form.Field>
                     <label>Username</label>
-                      <div class="ui left icon input">
+                      <div className="ui left icon input">
                         <input 
                           id= 'usernameInput'
                           type="text"  
@@ -69,13 +70,13 @@ export default class Signin extends Component {
                           onChange={handleChange}
                           name="username"
                         />
-                        <i class="user icon"></i>
+                        <i className="user icon"></i>
                     </div>
                   </Form.Field>
 
                   <Form.Field>
                     <label>Password</label>
-                      <div class="ui left icon input">
+                      <div className="ui left icon input">
                       <input 
                           id= 'passwordInput'
                           type="password"  
@@ -84,23 +85,23 @@ export default class Signin extends Component {
                           onChange={ handleChange }
                           name="password"
                         />
-                        <i class="lock icon"></i>
+                        <i className="lock icon"></i>
                     </div>
                   </Form.Field>
                 </Form>
 
-                <div className="mb-20">
+                {/* <div className="mb-20">
                   <div class="ui checkbox left floated">
                     <input type="checkbox" class="hidden" readonly="" tabindex="0" />
                     <label><small>Remember me</small></label>
                   </div>
                   <p className="right floated" href="#"><small>Forgot password</small></p>
-                </div>
+                </div> */}
 
                 {/* ADD MARGIN BOTTOM 20PX */}
-                <div style={{marginTop: '60px'}}>
-                  <button onClick={ handleSubmit } className="ui button teal left floated">Signin</button>
-                  <button className="ui button right floated">Signup</button>
+                <div style={{marginTop: '30px'}}>
+                  <button onClick={ handleSubmit } className="ui button teal left floated">Sign in</button>
+                  < Link to='/signup' ><button className="ui button right floated">New user?</button></Link>
                 </div>
               
               </div >
@@ -109,9 +110,8 @@ export default class Signin extends Component {
           </Card>
 
 
-          </div>
-        <div className="five wide column"></div>
         </div>
+        <div className="five wide column"></div>
       </Container>
       </div>
     )
