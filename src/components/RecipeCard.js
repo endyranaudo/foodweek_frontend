@@ -5,11 +5,11 @@ import RecipeDetailsLink from './RecipeDetailsLink';
 
 class RecipeCard extends Component {
 
-  componentDidMount = () => {
-    if (!this.props.username) {
-      this.props.history.push('/signin')
-    }
-  }
+  // componentDidMount = () => {
+  //   if (!this.props.username) {
+  //     this.props.history.push('/signin')
+  //   }
+  // }
 
   render() {
 
