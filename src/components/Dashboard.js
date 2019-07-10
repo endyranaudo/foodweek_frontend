@@ -87,7 +87,7 @@ export default class Dashboard extends Component {
               </div>
                 
                 {/* TEMPLATE WEEK MODAL start */}
-                <Modal dimmer={dimmer} open={open} onClose={this.close}>
+                {/* <Modal dimmer={dimmer} open={open} onClose={this.close}>
                   <div>
                     <Segment attached='top'>
                       <img src='https://melbuniblog.files.wordpress.com/2012/02/o_week_495_large.jpg' alt='weeklogo' />
@@ -108,21 +108,21 @@ export default class Dashboard extends Component {
 
                       <Menu.Item name='4' active={activeItem === '4'} onClick={this.handleItemClick}>
                         Week 4
-                      </Menu.Item>
+                      </Menu.Item> */}
 
                       {/* <Menu.Menu style={{marginRight: '200'}} position='right'>
                         <Button className="ui button red"> Delete Selected Week</Button>
                       </Menu.Menu> */}
-                    </Menu>
-                  </div>
+                    {/* </Menu>
+                  </div> */}
 
                   
-                  <Modal.Actions>
+                  {/* <Modal.Actions>
                     <Button className="ui button" onClick={this.close}>Back</Button>
                     <Button className="ui button teal" onClick={this.close}> Select week</Button>
                     <Button className="ui inverted button red left floated"> Delete Selected Week</Button>
                   </Modal.Actions>
-                </Modal>
+                </Modal> */}
                 {/* MODAL end */}
 
             </div>

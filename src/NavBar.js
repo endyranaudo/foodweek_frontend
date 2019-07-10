@@ -65,7 +65,7 @@ export default class NavBar extends Component {
             /> */}
 
             {/* <span className="mt-25 color teal">welcome</span> */}
-
+{/* 
               <span className="mt-25"><i className="user icon"></i></span>
 
             <Link to='/user'>
@@ -84,7 +84,7 @@ export default class NavBar extends Component {
                 onClick={() => this.props.signout()}
                 className='mt-15 mr-10'
               />
-            </Link>
+            </Link> */}
 
           </Menu.Menu>
           

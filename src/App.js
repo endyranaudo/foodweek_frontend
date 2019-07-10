@@ -216,10 +216,10 @@ class App extends Component {
     return (
       <div>
         <Switch>
-          <Route exact path="/" render={props => {return(<Landing {...props} />)}}/>
-          <Route exact path="/signin" render={props => {return(<Signin {...props} signin={this.signin} />)}}/>
+          {/* <Route exact path="/" render={props => {return(<Landing {...props} />)}}/> */}
+          {/* <Route exact path="/signin" render={props => {return(<Signin {...props} signin={this.signin} />)}}/> */}
           {/* <Route path="/signin" component={props => <Signin signin={signin} {...props} />}/> */}
-          <Route exact path="/signup" render={props => {return(<SignUp {...props} signup={this.signup} />)}}/>
+          {/* <Route exact path="/signup" render={props => {return(<SignUp {...props} signup={this.signup} />)}}/> */}
           <Route exact path="/dashboard" render={props => {return(<Dashboard {...props} username={username} signout={signout} schedule={schedule}/>)}}/>
           <Route exact path="/search" render={props => {return(<RecipeSearch {...props} username={username} signout={signout} addRecipe={addRecipe} schedule={schedule}/>)}}/>
           <Route exact path="/search/recipe/:id" render={props => {return(<RecipeDetails {...props} username={username} signout={signout} handleClickAdd={this.handleClickAdd} />)}}/>
