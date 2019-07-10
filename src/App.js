@@ -3,10 +3,10 @@ import React, { Component } from 'react'
 import './App.css';
 
 import Dashboard from './components/Dashboard'
-import Landing from './components/Landing'
+// import Landing from './components/Landing'
 import ShoppingList from './components/ShoppingList'
-import Signin from './components/Signin';
-import SignUp from './components/SignUp'
+// import Signin from './components/Signin';
+// import SignUp from './components/SignUp'
 import UserProfile from './components/UserProfile';
 import RecipeSearch from './components/RecipeSearch'
 import RecipeDetails from './components/RecipeDetails';

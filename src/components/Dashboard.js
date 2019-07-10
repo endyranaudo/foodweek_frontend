@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Button, Modal, Segment, Menu } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import NavBar from '../NavBar'
 import { Link } from 'react-router-dom'
 import '../App.css';
@@ -27,8 +27,6 @@ export default class Dashboard extends Component {
   
 
   render() {
-    const { activeItem } = this.state
-    const { open, dimmer } = this.state
     const { schedule } = this.props
 
     const mealCell = meal => {
@@ -85,46 +83,6 @@ export default class Dashboard extends Component {
               <div style={{marginTop: '30px'}}>
                 <button className="ui teal button right floated" onClick={this.show('blurring')}>Saved Week</button>
               </div>
-                
-                {/* TEMPLATE WEEK MODAL start */}
-                {/* <Modal dimmer={dimmer} open={open} onClose={this.close}>
-                  <div>
-                    <Segment attached='top'>
-                      <img src='https://melbuniblog.files.wordpress.com/2012/02/o_week_495_large.jpg' alt='weeklogo' />
-                    </Segment>
-
-                    <Menu attached='bottom' tabular>
-                      <Menu.Item name='active' active={activeItem === 'active'} onClick={this.handleItemClick}>
-                        Week 1
-                      </Menu.Item>
-
-                      <Menu.Item name='2' active={activeItem === '2'} onClick={this.handleItemClick}>
-                        Week 2
-                      </Menu.Item>
-
-                      <Menu.Item name='3' active={activeItem === '3'} onClick={this.handleItemClick}>
-                        Week 3
-                      </Menu.Item>
-
-                      <Menu.Item name='4' active={activeItem === '4'} onClick={this.handleItemClick}>
-                        Week 4
-                      </Menu.Item> */}
-
-                      {/* <Menu.Menu style={{marginRight: '200'}} position='right'>
-                        <Button className="ui button red"> Delete Selected Week</Button>
-                      </Menu.Menu> */}
-                    {/* </Menu>
-                  </div> */}
-
-                  
-                  {/* <Modal.Actions>
-                    <Button className="ui button" onClick={this.close}>Back</Button>
-                    <Button className="ui button teal" onClick={this.close}> Select week</Button>
-                    <Button className="ui inverted button red left floated"> Delete Selected Week</Button>
-                  </Modal.Actions>
-                </Modal> */}
-                {/* MODAL end */}
-
             </div>
           </Container>
 
