@@ -1,5 +1,7 @@
 import React from 'react';
 import { Popup } from 'semantic-ui-react';
+import '../App.css';
+
 
 
 const RecipeIngredients = (props) => (
@@ -10,7 +12,7 @@ const RecipeIngredients = (props) => (
       <Popup content='Add ingredient to list' trigger={
         <span> 
           <a onClick={() => props.handleClickAdd(props.name)}> 
-          <i className="icon color teal plus circle"/> 
+          <i className="icon color teal plus circle"/>
           </a>
         </span>
         } 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RecipeIngredients from './RecipeIngredients'
 import RecipeInstructions from './RecipeInstructions'
+import { Link } from 'react-router-dom'
 import { getRecipeDetails } from '../services/api';
 import NavBar from '../NavBar';
 import { Container, Grid } from 'semantic-ui-react';
@@ -70,10 +71,20 @@ class RecipeDetails extends Component {
                       }
                     </Grid.Column>
                     <Grid.Column width={10}>
+                      {/* <div style={{marginBottom: '30px'}}>
+                        <Link to='/dashboard'>
+                          <button className="ui teal button right floated">Back</button>
+                        </Link>
+                      </div> */}
                       <RecipeInstructions instructions={this.state.recipeInstructions} />
                     </Grid.Column>
                 </Grid.Row>
               </Grid>
+              {/* <div style={{marginBottom: '30px'}}>
+                <Link to='/dashboard'>
+                  <button className="ui teal button right floated">Back</button>
+                </Link>
+              </div> */}
             </Container> 
           </div>
       </div>

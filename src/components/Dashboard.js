@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container } from 'semantic-ui-react';
+import { Container, Icon, Header, Modal, Button } from 'semantic-ui-react';
 import NavBar from '../NavBar'
 import { Link } from 'react-router-dom'
 import '../App.css';
@@ -8,9 +8,16 @@ import '../App.css';
 
 export default class Dashboard extends Component {
 
-  state = {
-    open: false
+  state = { 
+    modalOpen: false 
   }
+
+  // MODAL
+  handleOpen = () => this.setState({ modalOpen: true })
+
+  handleClose = () => this.setState({ modalOpen: false })
+
+
 
   componentDidMount = () => {
     if (!this.props.username) {
@@ -42,11 +49,24 @@ export default class Dashboard extends Component {
     )
   }
 
-
   handleRemoveMeal = (e) => {
     this.removeRecipe(e.target.dataset['day'], e.target.dataset['meal'])
-    this.props.updateSchedule()
+    this.props.updateSchedule(JSON.parse(localStorage.getItem('schedule')))
   }
+
+
+  // ############ RESET WEEK ##################
+  resetWeek = () => {
+    // localStorage.setItem('schedule', JSON.stringify(this.props.emptySchedule))
+    this.props.updateSchedule({})
+  }
+
+  // handleResetWeek = (e) => {
+  //   this.resetWeek(e.target.dataset['day'], e.target.dataset['meal'])
+  //   this.props.updateSchedule()
+  // }
+
+  // ##########################################
 
 
   show = dimmer => () => this.setState({ dimmer, open: true })
@@ -113,9 +133,31 @@ export default class Dashboard extends Component {
                 </table>
               </div>
 
-              <div style={{marginTop: '30px'}}>
-                <button className="ui inverted red button left floated" > Reset Week </button>
-              </div>
+              {/* MODAL */}
+
+              <Modal trigger={<Button onClick={this.handleOpen} className="ui inverted red button left floated">Reset Week</Button>} basic size='small' open={this.state.modalOpen}
+        onClose={this.handleClose}>
+                <Header icon='hand paper outline' content='Before you carry on....' />
+                  <Modal.Content>
+                    <p>
+                      Are you sure you want to reset your weekly schedule?
+                    </p>
+                  </Modal.Content>
+                <Modal.Actions>
+                <Button onClick={this.handleClose} basic color='red' inverted>
+                  <Icon name='remove' /> No
+                </Button>
+                <Button onClick={ () => this.resetWeek()} color='green' inverted>
+                  <Icon name='checkmark' /> Yes
+                </Button>
+              </Modal.Actions>
+            </Modal>
+
+
+
+              {/* <div style={{marginTop: '30px'}}>
+                <button onClick={ e => this.resetWeek()} className="ui inverted red button left floated" > Reset Week </button>
+              </div> */}
 
               {/* <div style={{marginTop: '30px'}}>
                 <button className="ui teal button right floated" onClick={this.show('blurring')}>Saved Week</button>

@@ -8,7 +8,7 @@ import listHeader from '../images/shopping.jpg'
 
 let sectionStyle = {
   width: "100%",
-  height: "100vh",
+  minHeight: "100vh",
   backgroundColor: '#EBF2E0',
   marginTop: "14px"
 };

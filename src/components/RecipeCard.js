@@ -29,7 +29,7 @@ class RecipeCard extends Component {
     return(
       <Card>
         {/* <div style={{maxHeight : '50px'}}> */}
-          <Image src={`https://spoonacular.com/recipeImages/${this.props.recipe.image}`} wrapped ui={false}/>
+          <img style={{height : '220px', maxWidth: '250px'}} src={`https://spoonacular.com/recipeImages/${this.props.recipe.image}`} wrapped ui={false}/>
         {/* </div> */}
         {/* <Image src="https://spoonacular.com/recipeImages/char-grilled-beef-tenderloin-with-three-herb-chimichurri-156992.jpg" wrapped ui={false} /> */}
         {/* style={{objectFit: 'cover', heigth: '200'}} */}

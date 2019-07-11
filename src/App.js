@@ -40,6 +40,7 @@ const emptySchedule = [
   ]
 }))
 
+
 const getInitialSchedule = () => {
   try {
     return JSON.parse(localStorage.schedule)
@@ -47,6 +48,7 @@ const getInitialSchedule = () => {
     return [...emptySchedule]
   }
 }
+
 
 class App extends Component {
 
@@ -58,8 +60,12 @@ class App extends Component {
     schedule: getInitialSchedule()
   }
 
-  updateSchedule = () => {
-    this.setState({schedule: JSON.parse(localStorage.getItem('schedule'))})
+  updateSchedule = (newSchedule) => {
+    if (Object.keys(newSchedule).length > 0) {
+      newSchedule = emptySchedule
+      localStorage.setItem('schedule', JSON.stringify(newSchedule))
+    }
+    this.setState({schedule: JSON.parse(newSchedule)})
   }
 
   addRecipe = (recipe, dayName, mealName) => {
@@ -83,7 +89,7 @@ class App extends Component {
       localStorage.schedule = JSON.parse(this.state.schedule)
     } catch (e) {
       localStorage.removeItem('schedule')
-      localStorage.removeItem('token')
+      // localStorage.removeItem('token')
     }
     if(localStorage.token) {
       // debugger
@@ -230,7 +236,7 @@ class App extends Component {
 
   render(){
     const { signin, signout, addRecipe } = this
-    const { username, picture_url, schedule } = this.state
+    const { username, picture_url, schedule, emptySchedule } = this.state
     console.log(schedule)
     return (
       <div>
@@ -239,7 +245,7 @@ class App extends Component {
           {/* <Route exact path="/signin" render={props => {return(<Signin {...props} signin={this.signin} />)}}/> */}
           <Route path="/signin" component={props => <Signin signin={signin} {...props} />}/>
           <Route exact path="/signup" render={props => {return(<SignUp {...props} signup={this.signup} />)}}/>
-          <Route exact path="/dashboard" render={props => {return(<Dashboard {...props} updateSchedule={this.updateSchedule} username={username} signout={signout} schedule={schedule}/>)}}/>
+          <Route exact path="/dashboard" render={props => {return(<Dashboard {...props} emptySchedule={emptySchedule} updateSchedule={this.updateSchedule} username={username} signout={signout} schedule={schedule}/>)}}/>
           <Route exact path="/search" render={props => {return(<RecipeSearch {...props} username={username} signout={signout} addRecipe={addRecipe} schedule={schedule}/>)}}/>
           <Route exact path="/search/recipe/:id" render={props => {return(<RecipeDetails {...props} username={username} signout={signout} handleClickAdd={this.handleClickAdd} />)}}/>
           <Route exact path="/list" render={props => {return(<ShoppingList {...props} username={username} signout={signout} items={this.state.ingredients} removeItem={this.removeItemFromList} handleClickAdd={this.handleClickAdd} />)}}/>

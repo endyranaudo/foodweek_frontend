@@ -4,6 +4,7 @@ import RecipeCard from './RecipeCard'
 import { Container, Card } from 'semantic-ui-react';
 import { getRecipes } from '../services/api'
 
+
 export default class RecipeSearch extends Component {
 
   state = {
@@ -37,6 +38,9 @@ export default class RecipeSearch extends Component {
     return getRecipes(this.state.searchTerm)
       .then((recipes) => {
         this.setState({recipes:recipes.results}) 
+        this.setState({
+          searchTerm: ''
+        })
       })
   }
 
@@ -47,12 +51,21 @@ export default class RecipeSearch extends Component {
   }
 
   handleSubmit = (e) => {
-    
     e.preventDefault();
+    //     this.setState({
+    //   searchTerm: ''
+    // })
     
     return this.getRecipes().then(data => {
       // console.log(this.state.recipes)
     })
+    // this.setState({
+    //   searchTerm: ''
+    // })
+  }
+
+  value = () => {
+    ''
   }
 
   render() {
@@ -71,7 +84,7 @@ export default class RecipeSearch extends Component {
                         type="text"  
                         name="search" 
                         placeholder="" 
-                        value={this.value}
+                        value={this.state.searchTerm}
                         onChange={this.handleChange}
                       />
                       <button className="ui button teal" style={{marginLeft: '5px'}} type="submit">Search</button>
