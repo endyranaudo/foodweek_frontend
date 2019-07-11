@@ -3,10 +3,10 @@ import React, { Component } from 'react'
 import './App.css';
 
 import Dashboard from './components/Dashboard'
-// import Landing from './components/Landing'
+import Landing from './components/Landing'
 import ShoppingList from './components/ShoppingList'
-// import Signin from './components/Signin';
-// import SignUp from './components/SignUp'
+import Signin from './components/Signin';
+import SignUp from './components/SignUp'
 import UserProfile from './components/UserProfile';
 import RecipeSearch from './components/RecipeSearch'
 import RecipeDetails from './components/RecipeDetails';
@@ -40,6 +40,14 @@ const emptySchedule = [
   ]
 }))
 
+const getInitialSchedule = () => {
+  try {
+    return JSON.parse(localStorage.schedule)
+  } catch (e) {
+    return [...emptySchedule]
+  }
+}
+
 class App extends Component {
 
   state = {
@@ -47,7 +55,11 @@ class App extends Component {
     username: '',
     picture_url: '',
     ingredients : [],
-    schedule: localStorage.schedule ? JSON.parse(localStorage.schedule) : [...emptySchedule]
+    schedule: getInitialSchedule()
+  }
+
+  updateSchedule = () => {
+    this.setState({schedule: JSON.parse(localStorage.getItem('schedule'))})
   }
 
   addRecipe = (recipe, dayName, mealName) => {
@@ -67,6 +79,12 @@ class App extends Component {
   }
 
   componentDidMount () {
+    try {
+      localStorage.schedule = JSON.parse(this.state.schedule)
+    } catch (e) {
+      localStorage.removeItem('schedule')
+      localStorage.removeItem('token')
+    }
     if(localStorage.token) {
       // debugger
       validate()
@@ -96,7 +114,7 @@ class App extends Component {
   // SIGNIN & SIGNOUT ########
 
   signin = (user) => {
-    console.log(user)
+    // console.log(user)
     this.setState({ user_id: user.id, username: user.username, picture_url: user.picture_url }) 
     this.props.history.push('/dashboard')
     localStorage.setItem('token', user.token)
@@ -211,16 +229,17 @@ class App extends Component {
   // ###################
 
   render(){
-    const { signout, addRecipe } = this
+    const { signin, signout, addRecipe } = this
     const { username, picture_url, schedule } = this.state
+    console.log(schedule)
     return (
       <div>
         <Switch>
-          {/* <Route exact path="/" render={props => {return(<Landing {...props} />)}}/> */}
+          <Route exact path="/" render={props => {return(<Landing {...props} />)}}/>
           {/* <Route exact path="/signin" render={props => {return(<Signin {...props} signin={this.signin} />)}}/> */}
-          {/* <Route path="/signin" component={props => <Signin signin={signin} {...props} />}/> */}
-          {/* <Route exact path="/signup" render={props => {return(<SignUp {...props} signup={this.signup} />)}}/> */}
-          <Route exact path="/dashboard" render={props => {return(<Dashboard {...props} username={username} signout={signout} schedule={schedule}/>)}}/>
+          <Route path="/signin" component={props => <Signin signin={signin} {...props} />}/>
+          <Route exact path="/signup" render={props => {return(<SignUp {...props} signup={this.signup} />)}}/>
+          <Route exact path="/dashboard" render={props => {return(<Dashboard {...props} updateSchedule={this.updateSchedule} username={username} signout={signout} schedule={schedule}/>)}}/>
           <Route exact path="/search" render={props => {return(<RecipeSearch {...props} username={username} signout={signout} addRecipe={addRecipe} schedule={schedule}/>)}}/>
           <Route exact path="/search/recipe/:id" render={props => {return(<RecipeDetails {...props} username={username} signout={signout} handleClickAdd={this.handleClickAdd} />)}}/>
           <Route exact path="/list" render={props => {return(<ShoppingList {...props} username={username} signout={signout} items={this.state.ingredients} removeItem={this.removeItemFromList} handleClickAdd={this.handleClickAdd} />)}}/>

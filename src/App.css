@@ -3,6 +3,10 @@
   text-align: center;
 }
 
+link {
+  color: red;
+}
+
 .bg-transp {
   background-color: rgba(255, 255, 255, 0.6);
 }
@@ -17,6 +21,24 @@
 
 .backImg{
   background-color: aquamarine
+}
+
+.divBanner{
+  height: 300px;
+  width: 100%;
+}
+.detailsBg{
+  background-image: url("./images/detailsBg.jpg");
+  background-size: 'cover';
+  background-repeat: 'no-repeat';
+  background-position: center;
+}
+
+.dashBg{
+  background-image: url("./images/dashBg.jpg");
+  background-size: 'cover';
+  background-repeat: 'no-repeat';
+  background-position: center;
 }
 
 /* LIST */

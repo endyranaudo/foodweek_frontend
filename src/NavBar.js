@@ -17,8 +17,8 @@ export default class NavBar extends Component {
     const { activeItem } = this.state
 
     return (
-      <div> 
-        <Menu borderless>
+      <div > 
+        <Menu borderless >
           <Link to='/dashboard'>
             <Menu.Item className="ml-10">
               <img style={{height : 50, width: 50}} src={ logo } alt="logo"/>
@@ -65,7 +65,7 @@ export default class NavBar extends Component {
             /> */}
 
             {/* <span className="mt-25 color teal">welcome</span> */}
-{/* 
+
               <span className="mt-25"><i className="user icon"></i></span>
 
             <Link to='/user'>
@@ -84,7 +84,7 @@ export default class NavBar extends Component {
                 onClick={() => this.props.signout()}
                 className='mt-15 mr-10'
               />
-            </Link> */}
+            </Link>
 
           </Menu.Menu>
           

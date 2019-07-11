@@ -4,6 +4,7 @@ import RecipeInstructions from './RecipeInstructions'
 import { getRecipeDetails } from '../services/api';
 import NavBar from '../NavBar';
 import { Container, Grid } from 'semantic-ui-react';
+import '../App.css';
 
 
 
@@ -44,6 +45,7 @@ class RecipeDetails extends Component {
         < NavBar signout={this.props.signout} username={this.props.username}/>
           <div>
             <Container >
+              <div className="divBanner detailsBg"></div>
               <Grid >
                 <Grid.Row columns={2}>
                   <Grid.Column width={6}>
