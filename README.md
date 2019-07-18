@@ -11,7 +11,7 @@ I built this app because, as I love cooking, I needed a food planner with these 
 
 # Server
 
-The backend API was built using Ruby on Rails with a PostgreSQL database. This can be found in the following [GitHub repository](https://github.com/endyranaudo/foodweek-backend).
+The backend API was built using Ruby on Rails with a PostgreSQL database. This can be found in the following [GitHub repository](https://github.com/endyranaudo/foodweek_backend).
 
 I'm fetching data (recipes) from Spoonacular API.
 
